@@ -1,22 +1,18 @@
 <template>
     <button class="bg-[#7A9CA5] flex p-2 text-xs font-semibold text-white items-center gap-3">
-        <Headphone size="w-3"></Headphone>
+        <component :is="icon" size="w-3"></component>
         <slot></slot>
     </button>
 </template>
 
 
 <script>
-    import Headphone from './icons/Headphone.vue';
-
+import Headphone from './icons/Headphone.vue';
     export default {
-        components: {
-            Headphone
-        },
         props: {
-            withIcon: {
-                default: false,
-                type: Boolean
+            icon: {
+                type: Object,
+                required: true
             }
         }
     }
