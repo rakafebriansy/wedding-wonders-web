@@ -21,23 +21,48 @@
                 <img :src="heroImg">
             </div>
         </section>
+        <section class="w-full flex-col items-center flex gap-8 p-10">
+            <div class="text-center w-[90%]">
+                <p class="text-[#5C8692] font-manropeSemiBold text-xs">LAYANAN KAMI</p>
+                <h1 class=" font-playfairDisplayBold text-2xl">Mengapa Harus Wedding Wonders?</h1>
+            </div>
+            <ul class="flex flex-col gap-10 w-[75%]">
+                <li>
+                    <Card :image="card1Img" title="Mudah dan Cepat">Dengan berbagai template yang tersedia, pengguna dapat memilih desain yang sesuai dan menyesuaikannya dengan informasi acara hanya dalam beberapa menit.</Card>
+                </li>
+                <li>
+                    <Card :image="card2Img" title="Hemat Biaya">Menggunakan undangan digital menghilangkan kebutuhan untuk mencetak undangan fisik, sehingga menghemat biaya cetak dan pengiriman.</Card>
+                </li>
+                <li>
+                    <Card :image="card3Img" title="Ramah Lingkungan">Undangan digital lebih ramah lingkungan karena mengurangi penggunaan kertas dan tinta, serta mengurangi jejak karbon yang dihasilkan dari undangan fisik.</Card>
+                </li>
+            </ul>
+        </section>
     </div>
 </template>
 
 <script>
     import Navbar from '../components/layouts/Navbar.vue';
     import heroImg from '../assets/images/Hero.png';
+    import card1Img from '../assets/images/Card1.png';
+    import card2Img from '../assets/images/Card2.png';
+    import card3Img from '../assets/images/Card3.png';
     import Button from '../components/elements/Button.vue';
+    import Card from '../components/fragments/Card.vue';
 
     export default {
         data() {
             return {
-                heroImg: heroImg
+                heroImg,
+                card1Img,
+                card2Img,
+                card3Img,
             }
         },
         components: {
             Navbar,
-            Button
+            Button,
+            Card
         },
         methods: {
             
