@@ -21,12 +21,12 @@
                 <img :src="heroImg">
             </div>
         </section>
-        <section class="w-full flex-col items-center flex gap-8 p-10">
+        <section class="w-full flex-col items-center flex gap-8 py-10">
             <div class="text-center w-[90%]">
                 <p class="text-[#5C8692] font-manropeSemiBold text-xs">LAYANAN KAMI</p>
                 <h1 class=" font-playfairDisplayBold text-2xl">Mengapa Harus Wedding Wonders?</h1>
             </div>
-            <ul class="flex flex-col gap-10 w-[75%]">
+            <ul class="flex flex-col gap-10 w-[60%]">
                 <li>
                     <Card :image="card1Img" title="Mudah dan Cepat">Dengan berbagai template yang tersedia, pengguna dapat memilih desain yang sesuai dan menyesuaikannya dengan informasi acara hanya dalam beberapa menit.</Card>
                 </li>
@@ -35,6 +35,17 @@
                 </li>
                 <li>
                     <Card :image="card3Img" title="Ramah Lingkungan">Undangan digital lebih ramah lingkungan karena mengurangi penggunaan kertas dan tinta, serta mengurangi jejak karbon yang dihasilkan dari undangan fisik.</Card>
+                </li>
+            </ul>
+        </section>
+        <section class="bg-[#EDF5F7] flex flex-col items-center gap-6 py-10">
+            <h1 class="text-2xl font-playfairDisplayBold">Apa pendapat mereka...</h1>
+            <ul class="w-[70%] flex flex-col gap-6">
+                <li>
+                    <CommentBox name="Syahrul Yasin Limpo" from="Jakarta Pusat">“Website ini sangat efisien dan praktis untuk digunakan. Saya bisa membuat undangan pernikahan saya dalam waktu kurang dari satu jam dengan berbagai template cantik yang tersedia. Sangat memudahkan!“</CommentBox>
+                </li>
+                <li>
+                    <CommentBox name="Budi Arie Setiadi" from="Jakarta Pusat">“Website ini sangat efisien dan praktis untuk digunakan. Saya bisa membuat undangan pernikahan saya dalam waktu kurang dari satu jam dengan berbagai template cantik yang tersedia. Sangat memudahkan!“</CommentBox>
                 </li>
             </ul>
         </section>
@@ -49,6 +60,7 @@
     import card3Img from '../assets/images/Card3.png';
     import Button from '../components/elements/Button.vue';
     import Card from '../components/fragments/Card.vue';
+    import CommentBox from '../components/fragments/CommentBox.vue';
 
     export default {
         data() {
@@ -62,7 +74,8 @@
         components: {
             Navbar,
             Button,
-            Card
+            Card,
+            CommentBox
         },
         methods: {
             
