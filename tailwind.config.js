@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,vue,mjs}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'manropeBold': 'Manrope-Bold',
+        'manropeSemiBold': 'Manrope-SemiBold',
+        'manropeLight': 'Manrope-Light',
+        'manropeRegular': 'Manrope-Regular',
+        'playfairDisplayRegular': 'PlayfairDisplay-Regular',
+        'playfairDisplaySemiBold': 'PlayfairDisplay-SemiBold',
+        'playfairDisplayBold': 'PlayfairDisplay-Bold',
+      }
+    },
   },
   plugins: [],
 }

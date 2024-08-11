@@ -1,6 +1,6 @@
 <template>
-    <button class="bg-[#7A9CA5] flex p-2 text-xs font-semibold text-white items-center gap-3">
-        <component :is="icon" classname="w-3"></component>
+    <button class="bg-[#7A9CA5] flex py-2 px-4 text-xs font-semibold text-white items-center gap-3">
+        <component v-if="icon" :is="icon" classname="w-3"></component>
         <slot></slot>
     </button>
 </template>
@@ -11,7 +11,7 @@
         props: {
             icon: {
                 type: Object,
-                required: true
+                required: false
             }
         }
     }
