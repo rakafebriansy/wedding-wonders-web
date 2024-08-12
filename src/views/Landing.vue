@@ -25,7 +25,7 @@
         <section class="w-full flex-col items-center flex gap-8 py-10">
             <div class="text-center w-[90%]">
                 <p class="text-[#5C8692] font-manropeSemiBold text-xs">LAYANAN KAMI</p>
-                <h1 class=" font-playfairDisplayBold text-2xl lg:text-4xl">Mengapa Harus Wedding Wonders?</h1>
+                <h1 class=" font-playfairDisplayBold text-2xl lg:text-3xl">Mengapa Harus Wedding Wonders?</h1>
             </div>
             <ul class="flex flex-col lg:flex-row gap-10 w-[60%]">
                 <li class="w-[80%] h-full">
@@ -39,9 +39,9 @@
                 </li>
             </ul>
         </section>
-        <section class="bg-[#EDF5F7] flex flex-col items-center gap-6 py-10">
-            <h1 class="text-2xl font-playfairDisplayBold">Apa pendapat mereka...</h1>
-            <ul class="w-[70%] flex flex-col gap-6">
+        <section class="bg-[#EDF5F7] flex flex-col items-center gap-6 py-10 lg:py-20">
+            <h1 class="text-2xl font-playfairDisplayBold lg:text-3xl">Apa pendapat mereka...</h1>
+            <ul class="w-[70%] flex flex-col gap-6 lg:flex-row lg:w-[60%]">
                 <li>
                     <CommentBox name="Syahrul Yasin Limpo" from="Jakarta Pusat">“Website ini sangat efisien dan praktis untuk digunakan. Saya bisa membuat undangan pernikahan saya dalam waktu kurang dari satu jam dengan berbagai template cantik yang tersedia. Sangat memudahkan!“</CommentBox>
                 </li>
