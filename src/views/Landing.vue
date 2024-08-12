@@ -2,7 +2,7 @@
     <div class="relative font-manropeRegular">
         <Navbar/>
         <section class="lg:flex lg:min-h-screen lg:pt-16">
-            <div class="bg-[#EBF3F5] z-10 flex justify-center items-start flex-col gap-2 w-full px-10 pt-24 lg:pt-10 pb-10 lg:px-20">
+            <div class="bg-[#EBF3F5] z-10 flex justify-center items-start flex-col gap-2 lg:gap-4 w-full px-10 pt-24 lg:pt-10 pb-10 lg:px-20">
                 <div class="flex gap-1">
                     <svg class="w-3" viewBox="0 0 60 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M60 28.5273L53.3455 20.9455L54.2727 10.9091L44.4273 8.67273L39.2727 0L30 3.98182L20.7273 0L15.5727 8.67273L5.72727 10.8818L6.65455 20.9182L0 28.5273L6.65455 36.1091L5.72727 46.1727L15.5727 48.4091L20.7273 57.0818L30 53.0727L39.2727 57.0545L44.4273 48.3818L54.2727 46.1454L53.3455 36.1091L60 28.5273ZM32.7273 42.1636H27.2727V36.7091H32.7273V42.1636ZM32.7273 31.2545H27.2727V14.8909H32.7273V31.2545Z" fill="#5C8692"/>
@@ -25,16 +25,16 @@
         <section class="w-full flex-col items-center flex gap-8 py-10">
             <div class="text-center w-[90%]">
                 <p class="text-[#5C8692] font-manropeSemiBold text-xs">LAYANAN KAMI</p>
-                <h1 class=" font-playfairDisplayBold text-2xl">Mengapa Harus Wedding Wonders?</h1>
+                <h1 class=" font-playfairDisplayBold text-2xl lg:text-4xl">Mengapa Harus Wedding Wonders?</h1>
             </div>
-            <ul class="flex flex-col gap-10 w-[60%]">
-                <li>
+            <ul class="flex flex-col lg:flex-row gap-10 w-[60%]">
+                <li class="w-[80%] h-full">
                     <Card :image="card1Img" title="Mudah dan Cepat">Dengan berbagai template yang tersedia, pengguna dapat memilih desain yang sesuai dan menyesuaikannya dengan informasi acara hanya dalam beberapa menit.</Card>
                 </li>
-                <li>
+                <li class="w-[80%] h-full">
                     <Card :image="card2Img" title="Hemat Biaya">Menggunakan undangan digital menghilangkan kebutuhan untuk mencetak undangan fisik, sehingga menghemat biaya cetak dan pengiriman.</Card>
                 </li>
-                <li>
+                <li class="w-[80%] h-full">
                     <Card :image="card3Img" title="Ramah Lingkungan">Undangan digital lebih ramah lingkungan karena mengurangi penggunaan kertas dan tinta, serta mengurangi jejak karbon yang dihasilkan dari undangan fisik.</Card>
                 </li>
             </ul>

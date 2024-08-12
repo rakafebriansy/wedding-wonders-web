@@ -1,5 +1,5 @@
 <template>
-    <nav class="px-5 py-4 h-16 flex justify-between fixed w-full bg-white top-0 left-0 z-20">
+    <nav class="px-5 py-4 h-16 flex justify-between fixed w-full bg-white top-0 left-0 z-20 small-shadow">
         <ul class="flex gap-8">
             <li class="flex justify-center items-end py-2">
                 <svg class="w-3" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">

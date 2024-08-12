@@ -30,3 +30,6 @@
     font-family: 'PlayfairDisplay-SemiBold';
     src: url('./assets/fonts/PlayfairDisplay-SemiBold.ttf');
 }
+.small-shadow {
+    box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.1);
+  }
