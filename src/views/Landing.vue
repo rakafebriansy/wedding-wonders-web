@@ -77,6 +77,9 @@
                 </ul>
             </form>
         </section>
+        <section>
+            <Footer/>
+        </section>
     </div>
 </template>
 
@@ -98,6 +101,7 @@
     import BookOpen from '../components/icons/BookOpen.vue';
     import TextareaBox from '../components/elements/TextareaBox.vue';
     import Edit from '../components/icons/Edit.vue';
+    import Footer from '../components/layouts/Footer.vue';
 
     export default {
         data() {
@@ -125,7 +129,8 @@
             Email,
             Phone,
             TextareaBox,
-            Edit
+            Edit,
+            Footer
         }
     }
 </script>

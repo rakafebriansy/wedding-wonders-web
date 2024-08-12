@@ -17,7 +17,7 @@
                 </svg>
             </li>
         </ul>
-        <Button :icon="currentIcon">CUSTOMER SERVICE</Button>
+        <Button btnType="link" :icon="currentIcon">CUSTOMER SERVICE</Button>
     </nav>
 </template>
 <script>
