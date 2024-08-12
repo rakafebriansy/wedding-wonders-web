@@ -50,33 +50,35 @@
                 </li>
             </ul>
         </section>
-        <section class="flex flex-col justify-center gap-8 items-center py-10">
-            <div class="flex gap-3 flex-col items-center w-[80%]">
-                <h1 class="text-2xl font-playfairDisplayBold">Berikan komentar dan bagikan pengalaman Anda menggunakan layanan kami.</h1>
-                <p class="text-[#5C8692] text-xs">Apakah Anda telah mencoba membuat undangan digital dengan kami? Kami sangat menghargai masukan Anda!</p>
+        <section class="flex justify-center items-center py-10 lg:py-20">
+            <div class="flex flex-col justify-center gap-8 items-center lg:flex-row lg:w-[70%]">
+                <div class="flex gap-3 flex-col items-center w-[80%] lg:w-[70%] lg:gap-12">
+                    <h1 class="text-2xl font-playfairDisplayBold">Berikan komentar dan bagikan pengalaman Anda menggunakan layanan kami.</h1>
+                    <p class="text-[#5C8692] text-xs">Apakah Anda telah mencoba membuat undangan digital dengan kami? Kami sangat menghargai masukan Anda!</p>
+                </div>
+                <form action="" method="POST" class="w-[80%] lg:p-10 small-shadow">
+                    <ul class="w-full flex flex-col gap-3">
+                        <li>
+                            <TextBox placeholder="Nama" name="nama" :icon="userIcon" />
+                        </li>
+                        <li>
+                            <TextBox placeholder="Email" name="email" :icon="emailIcon" />
+                        </li>
+                        <li>
+                            <TextBox placeholder="Alamat" name="alamat" :icon="phoneIcon" />
+                        </li>
+                        <li>
+                            <StarBox :icon="bookOpenIcon" />
+                        </li>
+                        <li>
+                            <TextareaBox placeholder="Komentar" name="komentar" :icon="editIcon" />
+                        </li>
+                        <li>
+                            <Button btnType="submit" textSize="text-xl" :full="true">KIRIM</Button>
+                        </li>
+                    </ul>
+                </form>
             </div>
-            <form action="" method="POST" class="w-[80%]">
-                <ul class="w-full flex flex-col gap-3">
-                    <li>
-                        <TextBox placeholder="Nama" name="nama" :icon="userIcon" />
-                    </li>
-                    <li>
-                        <TextBox placeholder="Email" name="email" :icon="emailIcon" />
-                    </li>
-                    <li>
-                        <TextBox placeholder="Alamat" name="alamat" :icon="phoneIcon" />
-                    </li>
-                    <li>
-                        <StarBox :icon="bookOpenIcon" />
-                    </li>
-                    <li>
-                        <TextareaBox placeholder="Komentar" name="komentar" :icon="editIcon" />
-                    </li>
-                    <li>
-                        <Button btnType="submit" textSize="text-xl" :full="true">KIRIM</Button>
-                    </li>
-                </ul>
-            </form>
         </section>
         <section>
             <Footer/>
