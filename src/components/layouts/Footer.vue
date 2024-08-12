@@ -59,8 +59,8 @@
                 </div>
             </div>
         </div>
-        <div class="w-full py-4 flex justify-center bg-[#111E22]">
-            <p>&copy; Copyright 2024. Oleh Dev dan Raka.</p>
+        <div class="w-full py-4 flex justify-center bg-[#111E22] text-sm">
+            <p>&copy; Copyright 2024. Wedding Wonders Team.</p>
         </div>
     </footer>
 </template>

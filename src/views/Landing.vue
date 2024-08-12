@@ -18,7 +18,7 @@
                 <Button btnType="link" link="/picker">BUAT SEKARANG</Button>
             </div>
             <div class="bg-[#303E42] w-full justify-center items-center flex p-10 relative">
-                <div class="w-[50%] h-[50%] border-white border-4 absolute top-1/2 -left-10 -translate-y-1/2"></div>
+                <div class="w-[50%] h-[50%] border-white border-4 absolute top-1/2 -left-10 -translate-y-1/2 hidden lg:block"></div>
                 <img :src="heroImg" class="lg:absolute lg:w-[40%] lg:top-1/2 lg:-left-10 lg:-translate-y-1/2 lg:z-20">
             </div>
         </section>
@@ -27,7 +27,7 @@
                 <p class="text-[#5C8692] font-manropeSemiBold text-xs">LAYANAN KAMI</p>
                 <h1 class=" font-playfairDisplayBold text-2xl lg:text-3xl">Mengapa Harus Wedding Wonders?</h1>
             </div>
-            <ul class="flex flex-col lg:flex-row gap-10 w-[60%]">
+            <ul class="flex flex-col items-center lg:flex-row gap-10 w-[60%]">
                 <li class="w-[80%] h-full">
                     <Card :image="card1Img" title="Mudah dan Cepat">Dengan berbagai template yang tersedia, pengguna dapat memilih desain yang sesuai dan menyesuaikannya dengan informasi acara hanya dalam beberapa menit.</Card>
                 </li>
