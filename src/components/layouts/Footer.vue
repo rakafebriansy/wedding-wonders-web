@@ -1,7 +1,7 @@
 <template>
     <footer class="w-full bg-[#1E2C30] flex flex-col gap-2 justify-center items-center  font-manropeRegular text-white">
-        <div class="flex flex-col items-start justify-between gap-5 p-10">
-            <div class="flex flex-col items-start gap-3">
+        <div class="flex flex-col items-start justify-between gap-5 p-10 w-full lg:w-[70%] lg:gap-10">
+            <div class="flex flex-col items-start gap-3 lg:flex-row justify-between w-full">
                 <div class="flex gap-3">
                     <img :src="logoImg" alt="" class="w-8">
                     <h2 class=" font-playfairDisplayBold text-xl">Wedding Wonders</h2>
@@ -24,22 +24,22 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex flex-col justify-center gap-3 items-start text-sm">
-                <ul class="flex flex-col">
-                    <li class="text-lg font-playfairDisplayBold">Menu</li>
+            <div class="flex flex-col lg:flex-row gap-3 items-start text-sm lg:text-xs w-full justify-start lg:gap-24">
+                <ul class="flex flex-col lg:gap-2">
+                    <li class="text-lg lg:text-base font-playfairDisplayBold">Menu</li>
                     <li><a href="">Beranda</a></li>
                     <li><a href="">Layanan</a></li>
                     <li><a href="">Komentar</a></li>
                     <li><a href="">Ulasan</a></li>
                 </ul>
-                <ul class="flex flex-col">
-                    <li class="text-lg font-playfairDisplayBold">Media Sosial</li>
+                <ul class="flex flex-col lg:gap-2">
+                    <li class="text-lg lg:text-base font-playfairDisplayBold">Media Sosial</li>
                     <li><a href="">Facebook</a></li>
                     <li><a href="">Twitter</a></li>
                     <li><a href="">LinkedIn</a></li>
                 </ul>
-                <div class="flex flex-col items-start">
-                    <h3 class="text-lg font-playfairDisplayBold">Hubungi Kami</h3>
+                <div class="flex flex-col lg:gap-2 items-start">
+                    <h3 class="text-lg lg:text-base font-playfairDisplayBold">Hubungi Kami</h3>
                     <table>
                         <tbody>
                             <tr class=" align-top">
