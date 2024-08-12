@@ -15,7 +15,7 @@
                 <div class="w-full text-[#5C8692] text-xs">
                     <p>Buatlah Undangan Pernikahanmu Dengan Sederhana, Cepat, dan Elegan.</p>
                 </div>
-                <Button>BUAT SEKARANG</Button>
+                <Button btnType="link" link="/picker">BUAT SEKARANG</Button>
             </div>
             <div class="bg-[#303E42] w-full justify-center items-center flex p-10">
                 <img :src="heroImg">
@@ -49,6 +49,34 @@
                 </li>
             </ul>
         </section>
+        <section class="flex flex-col justify-center gap-8 items-center py-10">
+            <div class="flex gap-3 flex-col items-center w-[80%]">
+                <h1 class="text-2xl font-playfairDisplayBold">Berikan komentar dan bagikan pengalaman Anda menggunakan layanan kami.</h1>
+                <p class="text-[#5C8692] text-xs">Apakah Anda telah mencoba membuat undangan digital dengan kami? Kami sangat menghargai masukan Anda!</p>
+            </div>
+            <form action="" method="POST" class="w-[80%]">
+                <ul class="w-full flex flex-col gap-3">
+                    <li>
+                        <TextBox placeholder="Nama" name="nama" :icon="userIcon" />
+                    </li>
+                    <li>
+                        <TextBox placeholder="Email" name="email" :icon="emailIcon" />
+                    </li>
+                    <li>
+                        <TextBox placeholder="Alamat" name="alamat" :icon="phoneIcon" />
+                    </li>
+                    <li>
+                        <StarBox :icon="bookOpenIcon" />
+                    </li>
+                    <li>
+                        <TextareaBox placeholder="Komentar" name="komentar" :icon="editIcon" />
+                    </li>
+                    <li>
+                        <Button btnType="submit" textSize="text-xl" :full="true">KIRIM</Button>
+                    </li>
+                </ul>
+            </form>
+        </section>
     </div>
 </template>
 
@@ -61,6 +89,15 @@
     import Button from '../components/elements/Button.vue';
     import Card from '../components/fragments/Card.vue';
     import CommentBox from '../components/fragments/CommentBox.vue';
+    import TextBox from '../components/elements/TextBox.vue';
+    import StarBox from '../components/elements/StarBox.vue';
+    import { markRaw } from 'vue';
+    import User from '../components/icons/User.vue';
+    import Email from '../components/icons/Email.vue';
+    import Phone from '../components/icons/Phone.vue';
+    import BookOpen from '../components/icons/BookOpen.vue';
+    import TextareaBox from '../components/elements/TextareaBox.vue';
+    import Edit from '../components/icons/Edit.vue';
 
     export default {
         data() {
@@ -69,16 +106,26 @@
                 card1Img,
                 card2Img,
                 card3Img,
+                userIcon: markRaw(User),
+                emailIcon: markRaw(Email),
+                phoneIcon: markRaw(Phone),
+                bookOpenIcon: markRaw(BookOpen),
+                editIcon: markRaw(Edit),
             }
         },
         components: {
             Navbar,
             Button,
             Card,
-            CommentBox
-        },
-        methods: {
-            
+            CommentBox,
+            StarBox,
+            TextBox,
+            User,
+            BookOpen,
+            Email,
+            Phone,
+            TextareaBox,
+            Edit
         }
     }
 </script>

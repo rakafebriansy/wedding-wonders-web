@@ -29,7 +29,7 @@
                         <p class="text-[0.5rem]">{{ from }}</p>
                     </div>
                 </div>
-                <svg class="w-8" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 7.99996L12.1053 15.8947V0.105225H20V7.99996Z" fill="white"/>
                     <path d="M7.89474 7.99996L0 15.8947V0.105225H7.89474V7.99996Z" fill="white"/>
                 </svg>

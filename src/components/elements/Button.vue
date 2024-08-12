@@ -1,7 +1,11 @@
 <template>
-    <button class="bg-[#7A9CA5] flex py-2 px-4 text-xs font-semibold text-white items-center gap-3">
+    <a v-if="btnType == 'link'" :href="link" :class="fixedClass">
         <component v-if="icon" :is="icon" classname="w-3"></component>
-        <slot></slot>
+        <p><slot></slot></p>
+    </a>
+    <button v-else :type="btnType" :class="fixedClass">
+        <component v-if="icon" :is="icon" classname="w-3"></component>
+        <p><slot></slot></p>
     </button>
 </template>
 
@@ -12,6 +16,27 @@
             icon: {
                 type: Object,
                 required: false
+            },
+            btnType: {
+                type: String,
+                required: true
+            },
+            link:{
+                type: String,
+                required: false
+            },
+            textSize: {
+                type: String,
+                required: false
+            },
+            full: {
+                type: Boolean,
+                required: false
+            }
+        },
+        computed: {
+            fixedClass() {
+                return `bg-[#7A9CA5] inline-flex p-2 text-white justify-center items-center gap-3 font-manropeBold ${this.textSize ?? 'text-xs'} ${this.full ? 'w-full' : 'w-fit'}`
             }
         }
     }
