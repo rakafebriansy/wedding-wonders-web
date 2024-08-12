@@ -1,8 +1,8 @@
 <template>
     <div class="relative font-manropeRegular">
         <Navbar/>
-        <section>
-            <div class="bg-[#EBF3F5] flex justify-center items-start flex-col gap-2 w-full px-10 pt-24 pb-10">
+        <section class="lg:flex lg:min-h-screen lg:pt-16">
+            <div class="bg-[#EBF3F5] z-10 flex justify-center items-start flex-col gap-2 w-full px-10 pt-24 lg:pt-10 pb-10 lg:px-20">
                 <div class="flex gap-1">
                     <svg class="w-3" viewBox="0 0 60 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M60 28.5273L53.3455 20.9455L54.2727 10.9091L44.4273 8.67273L39.2727 0L30 3.98182L20.7273 0L15.5727 8.67273L5.72727 10.8818L6.65455 20.9182L0 28.5273L6.65455 36.1091L5.72727 46.1727L15.5727 48.4091L20.7273 57.0818L30 53.0727L39.2727 57.0545L44.4273 48.3818L54.2727 46.1454L53.3455 36.1091L60 28.5273ZM32.7273 42.1636H27.2727V36.7091H32.7273V42.1636ZM32.7273 31.2545H27.2727V14.8909H32.7273V31.2545Z" fill="#5C8692"/>
@@ -17,8 +17,9 @@
                 </div>
                 <Button btnType="link" link="/picker">BUAT SEKARANG</Button>
             </div>
-            <div class="bg-[#303E42] w-full justify-center items-center flex p-10">
-                <img :src="heroImg">
+            <div class="bg-[#303E42] w-full justify-center items-center flex p-10 relative">
+                <div class="w-[50%] h-[50%] border-white border-4 absolute top-1/2 -left-10 -translate-y-1/2"></div>
+                <img :src="heroImg" class="lg:absolute lg:w-[40%] lg:top-1/2 lg:-left-10 lg:-translate-y-1/2 lg:z-20">
             </div>
         </section>
         <section class="w-full flex-col items-center flex gap-8 py-10">
