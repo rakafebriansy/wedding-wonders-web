@@ -41,6 +41,14 @@
                 <p class="w-full text-sm gold-to-bottom text-justify">Urna turpis nibh nulla ornare ut. Tristique et, et in enim ultrices convallis. Risus mi, tellus dapibus morbi neque id et purus. Mi tincidunt commodo mattis tortor, est. Eu tempus eget risus sed orci venenatis, nibh. Viverra pellentesque turpis donec ac augue viverra sollicitudin natoque vulputate. Elementum faucibus commodo sed placerat sollicitudin pellentesque cras ultricies suscipit. Sit vitae volutpat, odio pellentesque pharetra. Blandit neque fringilla mi arcu arcu in. Nunc quisque lobortis pharetra maecenas commodo malesuada sit tortor nunc. Tortor, pharetra, maecenas nec bibendum lorem egestas. Velit nisl a viverra diam, id blandit nisl, tempor. Iaculis et ipsum, dui venenatis. Mi ultricies gravida sit semper lobortis id laoreet. Lacus, scelerisque libero phasellus non egestas condimentum et nunc. Commodo diam sodales donec cras sed vel. Senectus in venenatis nisl lectus congue ultricies non.</p>
             </div>
         </section>
+        <section class="flex flex-col items-center ">
+            <div class="w-[90%] flex flex-col items-center gap-8 py-8">
+                <h2 class="text-4xl font-parisienneRegular">Lokasi</h2>
+                <div class="w-full">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31595.500634455668!2d113.72218910000001!3d-8.1585914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd694351d727e69%3A0xec33c34804a10832!2sUniversitas%20Jember!5e0!3m2!1sid!2sid!4v1723651116596!5m2!1sid!2sid" class="w-full min-h-[20rem]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
