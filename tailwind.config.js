@@ -9,11 +9,14 @@ export default {
       fontFamily:{
         'manropeBold': 'Manrope-Bold',
         'manropeSemiBold': 'Manrope-SemiBold',
-        'manropeLight': 'Manrope-Light',
         'manropeRegular': 'Manrope-Regular',
         'playfairDisplayRegular': 'PlayfairDisplay-Regular',
         'playfairDisplaySemiBold': 'PlayfairDisplay-SemiBold',
         'playfairDisplayBold': 'PlayfairDisplay-Bold',
+        'oxygenMonoRegular': 'OxygenMono-Regular',
+        'poppinsRegular': 'Poppins-Regular',
+        'parisienneRegular': 'Parisienne-Regular',
+        'appleChancery': 'Apple-Chancery',
       }
     },
   },

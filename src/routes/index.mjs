@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import LandingPageView from '../views/Landing.vue';
 import TemplatePickerPageView from '../views/TemplatePicker.vue';
 import FormPageView from '../views/Form.vue';
-import BlackRosePageView from '../views/templates/BlackRose.vue';
+import BeautifulInWhite from '../views/templates/BeautifulInWhite.vue';
 
 const routes = [
     {
@@ -18,8 +18,8 @@ const routes = [
         component: FormPageView
     },
     {
-        path: '/br/:id',
-        component: BlackRosePageView
+        path: '/bw/:id',
+        component: BeautifulInWhite
     }
 ];
 

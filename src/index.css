@@ -11,10 +11,6 @@
     src: url('./assets/fonts/Manrope-SemiBold.ttf');
 }
 @font-face {
-    font-family: 'Manrope-Light';
-    src: url('./assets/fonts/Manrope-Light.ttf');
-}
-@font-face {
     font-family: 'Manrope-Regular';
     src: url('./assets/fonts/Manrope-Regular.ttf');
 }
@@ -30,6 +26,31 @@
     font-family: 'PlayfairDisplay-SemiBold';
     src: url('./assets/fonts/PlayfairDisplay-SemiBold.ttf');
 }
+@font-face {
+    font-family: 'Apple-Chancery';
+    src: url('./assets/fonts/Apple-Chancery.ttf');
+}
+@font-face {
+    font-family: 'OxygenMono-Regular';
+    src: url('./assets/fonts/OxygenMono-Regular.ttf');
+}
+@font-face {
+    font-family: 'Parisienne-Regular';
+    src: url('./assets/fonts/Parisienne-Regular.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('./assets/fonts/Poppins-Regular.ttf');
+}
 .small-shadow {
     box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.1);
   }
+
+.slideshow {
+    animation: slideshow 10s linear infinite;
+}
+
+@keyframes slideshow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-66.66%); } /* Adjust based on the number of images */
+}
