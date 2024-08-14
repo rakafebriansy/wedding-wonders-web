@@ -50,6 +50,14 @@
     animation: slideshow 10s linear infinite;
 }
 
+.goldToBottom {
+    @apply bg-gradient-to-b from-[#D19E49] to-black text-transparent bg-clip-text;
+}
+
+.goldToTop {
+    @apply bg-gradient-to-b to-[#D19E49] from-black text-transparent bg-clip-text;
+}
+
 @keyframes slideshow {
     0% { transform: translateX(0); }
     100% { transform: translateX(-66.66%); } /* Adjust based on the number of images */
