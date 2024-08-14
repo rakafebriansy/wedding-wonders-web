@@ -50,11 +50,11 @@
     animation: slideshow 10s linear infinite;
 }
 
-.goldToBottom {
+.gold-to-bottom {
     @apply bg-gradient-to-b from-[#D19E49] to-black text-transparent bg-clip-text;
 }
 
-.goldToTop {
+.gold-to-top {
     @apply bg-gradient-to-b to-[#D19E49] from-black text-transparent bg-clip-text;
 }
 
