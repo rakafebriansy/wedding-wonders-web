@@ -49,15 +49,46 @@
                 </div>
             </div>
         </section>
+        <section class="flex flex-col items-center font-appleChancery">
+            <div class="w-[80%] py-8">
+                <div class="w-full flex flex-col text-2xl gap-8">
+                    <div class="flex flex-col items-center text-center gap-3">
+                        <h3 class="text-[#9A7436]">There is only one happiness in this life, to love and be loved</h3>
+                        <img :src="flowerImg" class="w-[20%]" alt="Flower">
+                    </div>
+                    <div class="small-shadow p-8 flex flex-col items-center text-center gap-3">
+                        <h3 class="gold-to-bottom">Marriage</h3>
+                        <div class="gold-to-bottom text-sm font-poppinsRegular flex flex-col gap-3">
+                            <p>10:00 AM to 1:00PM</p>
+                            <p>Jl. Pemuda sesat , Gang.Petir
+                                No.12, Jakarta Selatan</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-2xl items-center text-center gap-3">
+                        <h3 class="text-[#9A7436]">There is only one happiness in this life, to love and be loved</h3>
+                        <img :src="flowerImg" class="w-[20%]" alt="Flower">
+                    </div>
+                    <div class="small-shadow p-8 flex flex-col items-center text-center gap-3">
+                        <h3 class="gold-to-bottom">Reception</h3>
+                        <div class="gold-to-bottom text-sm font-poppinsRegular flex flex-col gap-3">
+                            <p>10:00 AM to 1:00PM</p>
+                            <p>Jl. Pemuda sesat , Gang.Petir
+                                No.12, Jakarta Selatan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
 <script>
     import weddingPhotoImg from '../../assets/images/WeddingPhoto.png';
+    import flowerImg from '../../assets/images/Flower.png';
     export default {
         data() {
             return {
-                weddingPhotoImg
+                flowerImg
             }
         },
         components: {
