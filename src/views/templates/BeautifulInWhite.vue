@@ -2,7 +2,7 @@
     <div class="relative font-manropeRegular">
         <section class="relative w-full min-h-screen overflow-scroll flex justify-center flex-col items-center gap-16">
             <img :src="weddingPhotoImg" alt="wedding-photo" class="slideshow absolute h-full left-0 -translate-x-[30%] max-w-max">
-            <div class="w-full h-full bg-[rgba(255,255,255,0.5)] absolute"></div>
+            <div class="w-full h-full bg-[rgba(255,255,255,0.8)] absolute"></div>
             <div class="text-4xl font-appleChancery z-10 flex items-center gap-2 flex-col">
                 <h1 class="gold-to-bottom">Rafael</h1>
                 <h1 class="gold-to-bottom">&</h1>
@@ -119,7 +119,8 @@
     export default {
         data() {
             return {
-                flowerImg
+                flowerImg,
+                weddingPhotoImg
             }
         },
         components: {
