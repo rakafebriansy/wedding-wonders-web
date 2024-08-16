@@ -36,7 +36,7 @@
         },
         computed: {
             fixedClass() {
-                return `bg-[#7A9CA5] inline-flex p-2 text-white justify-center items-center gap-3 font-manropeBold ${this.textSize ?? 'text-xs'} ${this.full ? 'w-full' : 'w-fit'}`
+                return `bg-[#7A9CA5] inline-flex py-2 px-3 text-white justify-center items-center gap-3 font-manropeBold ${this.textSize ?? 'text-xs'} ${this.full ? 'w-full' : 'w-fit'}`
             }
         }
     }

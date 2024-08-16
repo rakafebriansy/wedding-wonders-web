@@ -2,23 +2,23 @@
     <div class="border border-[#5C8692] text-[#fbebeb] w-full flex justify-start px-2 py-3 h-12">
         <input type="hidden" :name="name" :value="rating">
         <div class="w-[10%] flex justify-center items-center">
-            <component v-if="icon" :is="icon" classname="w-4" color="#5C8692"></component>
+            <component v-if="icon" :is="icon" classname="w-4 lg:w-5" color="#5C8692"></component>
         </div>
         <ul class="w-[90%] flex justify-center items-center gap-8 select-none">
             <li @click="()=>{starClicked(1)}">
-                <Star2 classname="w-4" :rated="firstStar" color="#5C8692"/>
+                <Star2 classname="w-4 lg:w-5" :rated="firstStar" color="#5C8692"/>
             </li>
             <li @click="()=>{starClicked(2)}">
-                <Star2 classname="w-4" :rated="secondStar" color="#5C8692"/>
+                <Star2 classname="w-4 lg:w-5" :rated="secondStar" color="#5C8692"/>
             </li>
             <li @click="()=>{starClicked(3)}">
-                <Star2 classname="w-4" :rated="thirdStar" color="#5C8692"/>
+                <Star2 classname="w-4 lg:w-5" :rated="thirdStar" color="#5C8692"/>
             </li>
             <li @click="()=>{starClicked(4)}">
-                <Star2 classname="w-4" :rated="fourthStar" color="#5C8692"/>
+                <Star2 classname="w-4 lg:w-5" :rated="fourthStar" color="#5C8692"/>
             </li>
             <li @click="()=>{starClicked(5)}">
-                <Star2 classname="w-4" :rated="fifthStar" color="#5C8692"/>
+                <Star2 classname="w-4 lg:w-5" :rated="fifthStar" color="#5C8692"/>
             </li>
         </ul>
     </div>

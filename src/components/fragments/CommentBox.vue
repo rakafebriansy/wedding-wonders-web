@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full text-xs flex flex-col font-manropeRegular bg-white">
+    <div class="w-full text-xs lg:text-base flex flex-col font-manropeRegular bg-white">
         <div class="p-5 w-full">
             <p><slot></slot></p>
         </div>
@@ -25,8 +25,8 @@
                                 <starIcon classname="w-3"/>
                             </li>
                         </ul>
-                        <h3 class=" font-playfairDisplaySemiBold text-xs">{{ name }}</h3>
-                        <p class="text-[0.5rem]">{{ from }}</p>
+                        <h3 class=" font-playfairDisplaySemiBold text-xs lg:text-base">{{ name }}</h3>
+                        <p class="text-[0.5rem] lg:text-xs">{{ from }}</p>
                     </div>
                 </div>
                 <svg class="w-6" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
