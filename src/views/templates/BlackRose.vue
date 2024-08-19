@@ -28,8 +28,36 @@
                 <SmoothButton btnType="link" :shadow="true">Lihat Undangan</SmoothButton>
             </div>
         </section>
-        <section class="bg-[url('/src/assets/images/BgBlackRose.png')] w-full min-h-screen">
-            <!-- <img src="../../assets/images/BgBlackRose.png" alt=""> -->
+        <section class="bg-[url('/src/assets/images/BgBlackRose.png')] w-full flex flex-col items-center py-10 gap-12">
+            <div class="w-[90%] flex flex-col items-center text-center gap-2 ">
+                <h1 class="text-5xl font-sacramentoRegular text-pink-500">Acara Pernikahan</h1>
+                <p class="text-sm">Diselenggarakan pada 20 November 2023 di Bandung, Jawa Barat.</p>
+                <p class="text-xs">Oleh karena itu, d engan segala hormat, kami bermaksud untuk mengundang Bapak/Ibu, Saudara/i, untuk hadir pada acara pernikahan kami. </p>
+            </div>
+            <div class="flex flex-col gap-4 items-center w-[90%] text-xs">
+                <div class="w-full flex-col flex items-start">
+                    <div class="w-[70%] gap-3 flex flex-col">
+                        <h4 class="font-sacramentoRegular text-pink-500 text-3xl">Gervasius Anton</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium quos perspiciatis ea commodi labore maiores nisi deserunt aliquam non quaerat.</p>
+                        <p class="flex flex-col items-start">
+                            <span>Putra dari Bapak Lorem</span>
+                            <span>dan</span>
+                            <span>Ibu Ipsum</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full flex-col flex items-end text-end">
+                    <div class="w-[70%] gap-3 flex flex-col">
+                        <h4 class="font-sacramentoRegular text-pink-500 text-3xl">Michelle Leck</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium quos perspiciatis ea commodi labore maiores nisi deserunt aliquam non quaerat.</p>
+                        <p class="flex flex-col items-end">
+                            <span>Putra dari Bapak Dolor</span>
+                            <span>dan</span>
+                            <span>Ibu Sit</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </template>
