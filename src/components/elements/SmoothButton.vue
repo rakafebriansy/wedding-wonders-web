@@ -19,7 +19,7 @@
                 type: String,
                 required: false
             },
-            textSize: {
+            additionClass: {
                 type: String,
                 required: false
             },
@@ -34,7 +34,7 @@
         },
         computed: {
             fixedClass() {
-                return `bg-white inline-flex py-2 px-3 text-pink-500 justify-center items-center gap-3 font-poppinsRegular rounded-md ${this.shadow ? 'shadow-md' : 'shadow-none'} ${this.textSize ?? 'text-xs'} ${this.full ? 'w-full' : 'w-fit'}`
+                return `bg-white inline-flex py-2 px-3 text-pink-500 justify-center items-center gap-3 font-poppinsRegular rounded-md ${this.shadow ? 'shadow-md' : 'shadow-none'} ${this.additionClass ?? 'text-xs'} ${this.full ? 'w-full' : 'w-fit'}`
             }
         }
     }

@@ -105,12 +105,12 @@
                 <h2 class="text-3xl lg:text-4xl text-center font-playfairDisplaySemiBold">Kirim Doa Dan Ucapan</h2>
                 <p class="text-base lg:text-lg text-center text-[#7E7E7E] lg:w-[80%]">Tuliskan sesuatu ucapan berupa harapan ataupun doa untuk kedua mempelai.</p>
                 <div class="flex flex-col gap-2 lg:gap-3 w-full">
-                    <TextBox2 placeholder="Tuliskan nama lengkap anda" name="name"/>
-                    <TextBox2 placeholder="Tuliskan alamat email lengkap" name="email"/>
-                    <TextBox2 placeholder="Tuliskan nomor HP lengkap" name="phoneNumber"/>
-                    <TextBox2 placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
-                    <TextareaBox2 placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
-                    <div class="w-full flex flex-col items-start text-[#7E7E7E]">
+                    <TextBoxBw placeholder="Tuliskan nama lengkap anda" name="name"/>
+                    <TextBoxBw placeholder="Tuliskan alamat email lengkap" name="email"/>
+                    <TextBoxBw placeholder="Tuliskan nomor HP lengkap" name="phoneNumber"/>
+                    <TextBoxBw placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
+                    <TextareaBoxBw placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
+                    <div class="w-full flex flex-col items-start gap-1 text-[#7E7E7E]">
                         <p>Apakah anda akan hadir memenuhi undangan saya?</p>
                         <div class="flex gap-2">
                             <input type="radio" name="attend">
@@ -134,8 +134,8 @@
 <script>
     import weddingPhotoImg from '../../assets/images/WeddingPhoto.png';
     import flowerImg from '../../assets/images/Flower.png';
-    import TextBox2 from '../../components/elements/TextBox2.vue';
-    import TextareaBox2 from '../../components/elements/TextareaBox2.vue';
+    import TextBoxBw from '../../components/elements/TextBoxBw.vue';
+    import TextareaBoxBw from '../../components/elements/TextareaBoxBw.vue';
     import RoundedButton from '../../components/elements/RoundedButton.vue';
     export default {
         data() {
@@ -145,8 +145,8 @@
             }
         },
         components: {
-            TextBox2,
-            TextareaBox2,
+            TextBoxBw,
+            TextareaBoxBw,
             RoundedButton
         },
         methods: {

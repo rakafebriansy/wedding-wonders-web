@@ -3,7 +3,7 @@
         <section class="relative w-full min-h-screen overflow-hidden flex justify-center flex-col items-center text-white gap-16 lg:gap-28">
             <img :src="weddingPhotoImg" alt="wedding-photo" class="animation-slideshow lg:animate-none absolute h-full left-0 lg:w-screen max-w-max lg:max-w-none">
             <div class="w-full h-full bg-[rgba(0,0,0,0.7)] absolute"></div>
-            <div class="flex flex-col items-center gap-4 z-10">
+            <div class="flex flex-col items-center gap-6 z-10">
                 <h4 class="text-sm">Kepada Bapak/Ibu/Saudara/i,</h4>
                 <h1 class=" font-sacramentoRegular text-5xl text-center font-bold">Anton & Michelle</h1>
                 <p class="text-xs">Akan melangsungkan pernikahan dalam:</p>
@@ -112,11 +112,38 @@
                 </svg>
             </div>
         </section>
+        <section class="flex justify-center items-center p-8 bg-black">
+            <div class="small-shadow p-6 flex flex-col items-center font-poppinsRegular text-sm lg:text-lg gap-6">
+                <h2 class="text-5xl text-pink-500 font-bold text-center font-sacramentoRegular flex flex-col items-center gap-2"><span>Kirim Doa</span> <span>Dan Ucapan</span></h2>
+                <p class="text-xs text-center text-white lg:w-[80%]">Tuliskan sesuatu ucapan berupa harapan ataupun doa untuk kedua mempelai.</p>
+                <div class="flex flex-col gap-4 w-full text-xs">
+                    <TextBoxBr placeholder="Tuliskan nama lengkap anda" name="name"/>
+                    <TextBoxBr placeholder="Tuliskan alamat email lengkap" name="email"/>
+                    <TextBoxBr placeholder="Tuliskan nomor HP lengkap" name="phoneNumber"/>
+                    <TextBoxBr placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
+                    <TextareaBoxBr placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
+                    <div class="w-full flex flex-col items-start text-white gap-2">
+                        <p>Apakah anda akan hadir memenuhi undangan saya?</p>
+                        <div class="flex gap-2">
+                            <input type="radio" name="attend">
+                            <p>Saya akan hadir</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="radio" name="attend">
+                            <p>Saya tidak akan hadir</p>
+                        </div>
+                    </div>
+                </div>
+                <SmoothButton btnType="submit" additionClass="text-sm lg:text-lg bg-pink-500 text-white" :full="true">KIRIM</SmoothButton>
+            </div>
+        </section>
     </div>
 </template>
 <script>
     import weddingPhotoImg from '../../assets/images/WeddingPhoto.png';
     import SmoothButton from '../../components/elements/SmoothButton.vue';
+    import TextBoxBr from '../../components/elements/TextBoxBr.vue';
+    import TextareaBoxBr from '../../components/elements/TextareaBoxBr.vue';
     export default {
         data() {
             return {
@@ -124,7 +151,9 @@
             }
         },
         components: {
-            SmoothButton
+            SmoothButton,
+            TextareaBoxBr,
+            TextBoxBr,
         },
         methods: {
             
