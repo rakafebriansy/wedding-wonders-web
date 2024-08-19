@@ -3,38 +3,38 @@
         <section class="relative w-full min-h-screen overflow-hidden flex justify-center flex-col items-center text-white gap-16 lg:gap-28">
             <img :src="weddingPhotoImg" alt="wedding-photo" class="animation-slideshow lg:animate-none absolute h-full left-0 lg:w-screen max-w-max lg:max-w-none">
             <div class="w-full h-full bg-[rgba(0,0,0,0.7)] absolute"></div>
-            <div class="flex flex-col items-center gap-6 z-10">
-                <h4 class="text-sm">Kepada Bapak/Ibu/Saudara/i,</h4>
-                <h1 class=" font-sacramentoRegular text-5xl text-center font-bold">Anton & Michelle</h1>
-                <p class="text-xs">Akan melangsungkan pernikahan dalam:</p>
-                <div class="flex gap-4 text-sm">
-                    <div class="w-20 h-20 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
+            <div class="flex flex-col items-center gap-6 lg:gap-8 z-10">
+                <h4 class="text-sm lg:text-xl">Kepada Bapak/Ibu/Saudara/i,</h4>
+                <h1 class=" font-sacramentoRegular text-5xl text-center font-bold lg:text-8xl">Anton & Michelle</h1>
+                <p class="text-xs lg:text-lg">Akan melangsungkan pernikahan dalam:</p>
+                <div class="flex gap-4 lg:gap-6 text-sm lg:text-xl">
+                    <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
                         <p>0</p>
                         <p>hari</p>
                     </div>
-                    <div class="w-20 h-20 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
+                    <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
                         <p>0</p>
                         <p>jam</p>
                     </div>
-                    <div class="w-20 h-20 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
+                    <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
                         <p>0</p>
                         <p>menit</p>
                     </div>
-                    <div class="w-20 h-20 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
+                    <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full bg-pink-600 flex flex-col items-center justify-center gap-1">
                         <p>0</p>
                         <p>detik</p>
                     </div>
                 </div>
-                <SmoothButton btnType="link" :shadow="true">Lihat Undangan</SmoothButton>
+                <SmoothButton btnType="link" additionClass="lg:text-sm" :shadow="true">Lihat Undangan</SmoothButton>
             </div>
         </section>
-        <section class="bg-[url('/src/assets/images/BgBlackRose.png')] w-full flex flex-col items-center py-10 gap-12">
-            <div class="w-[90%] flex flex-col items-center text-center gap-2 ">
-                <h1 class="text-5xl font-sacramentoRegular text-pink-500 font-bold">Acara Pernikahan</h1>
-                <p class="text-sm">Diselenggarakan pada 20 November 2023 di Bandung, Jawa Barat.</p>
-                <p class="text-xs">Oleh karena itu, d engan segala hormat, kami bermaksud untuk mengundang Bapak/Ibu, Saudara/i, untuk hadir pada acara pernikahan kami. </p>
+        <section class="bg-[url('/src/assets/images/BgBlackRose.png')] w-full flex flex-col items-center py-10 lg:py-20 gap-12">
+            <div class="w-[90%] flex flex-col items-center text-center gap-2 lg:gap-4 lg:w-[70%]">
+                <h1 class="text-5xl font-sacramentoRegular text-pink-500 font-bold lg:text-7xl">Acara Pernikahan</h1>
+                <p class="text-sm lg:text-lg">Diselenggarakan pada 20 November 2023 di Bandung, Jawa Barat.</p>
+                <p class="text-xs lg:text-base">Oleh karena itu, dengan segala hormat, kami bermaksud untuk mengundang Bapak/Ibu, Saudara/i, untuk hadir pada acara pernikahan kami. </p>
             </div>
-            <div class="flex flex-col gap-4 items-center w-[90%] text-xs">
+            <div class="flex flex-col lg:flex-row gap-4 items-center w-[90%] lg:w-[70%] text-xs">
                 <div class="w-full flex-col flex items-start">
                     <div class="w-[70%] gap-3 flex flex-col">
                         <h4 class="font-sacramentoRegular text-pink-500 text-3xl">Gervasius Anton</h4>
@@ -59,11 +59,12 @@
                 </div>
             </div>
         </section>
-        <section class="bg-black p-10 flex flex-col items-center gap-8 text-white text-xs">
-            <h1 class="text-pink-500 font-sacramentoRegular text-center text-5xl font-bold">Informasi Acara</h1>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31595.500634455668!2d113.72218910000001!3d-8.1585914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd694351d727e69%3A0xec33c34804a10832!2sUniversitas%20Jember!5e0!3m2!1sid!2sid!4v1723651116596!5m2!1sid!2sid" class="w-full min-h-[20rem] lg:min-h-[35rem]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <p class="text-center">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba di tujuan namun tidak ada tanda-tanda sedang dilangsungkan pernikahan, boleh jadi Anda salah jadwal, atau salah tempat.</p>
-            <div class="w-full border-white border bg-[#3A3A3A] rounded-lg">
+        <section class="bg-black p-10 lg:p-20 flex flex-col items-center gap-8 lg:gap-12 text-white text-xs">
+            <h1 class="text-pink-500 font-sacramentoRegular text-center text-5xl lg:text-7xl font-bold">Informasi Acara</h1>
+            <iframe class="w-full lg:w-[70%] min-h-[20rem] lg:min-h-[30rem]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31595.500634455668!2d113.72218910000001!3d-8.1585914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd694351d727e69%3A0xec33c34804a10832!2sUniversitas%20Jember!5e0!3m2!1sid!2sid!4v1723651116596!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p class="text-center lg:text-lg w-[70%]">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba di tujuan namun tidak ada tanda-tanda sedang dilangsungkan pernikahan, boleh jadi Anda salah jadwal, atau salah tempat.</p>
+            <div class="flex flex-col gap-8 lg:gap-12 lg:flex-row lg:w-[80%]">
+                <div class="w-full border-white border bg-[#3A3A3A] rounded-lg">
                 <div class="text-center p-2">AKAD NIKAH</div>
                 <div class="text-center p-2 flex flex-col gap-1 items-center border-t-[1px] border-b-[1px]">
                     <svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,28 +96,29 @@
                 </div>
                 <div class="text-center p-2">Saat acara akad diharapkan untuk kondusif menjaga kekhidmatan dan kekhusyuan seluruh prosesi.</div>
             </div>
+            </div>
         </section>
-        <section class="p-10 flex flex-col items-center gap-8 text-xs">
+        <section class="p-10 lg:p-20 flex flex-col items-center gap-8 text-xs">
             <div class="flex flex-col items-center text-center gap-1">
-                <h1 class="text-5xl font-sacramentoRegular text-pink-500 font-bold">Cerita Kami</h1>
+                <h1 class="text-5xl font-sacramentoRegular text-pink-500 font-bold lg:text-7xl">Cerita Kami</h1>
             </div>
             <div class="relative text-justify w-[90%]">
-                <svg class="absolute w-8 top-0 left-0 z-10 -translate-x-3/4 -translate-y-3/4" fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <svg class="absolute w-8 lg:w-12 top-0 left-0 z-10 -translate-x-3/4 -translate-y-3/4" fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <title>quote</title>
                     <path d="M9.563 8.469l-0.813-1.25c-5.625 3.781-8.75 8.375-8.75 12.156 0 3.656 2.688 5.375 4.969 5.375 2.875 0 4.906-2.438 4.906-5 0-2.156-1.375-4-3.219-4.688-0.531-0.188-1.031-0.344-1.031-1.25 0-1.156 0.844-2.875 3.938-5.344zM21.969 8.469l-0.813-1.25c-5.563 3.781-8.75 8.375-8.75 12.156 0 3.656 2.75 5.375 5.031 5.375 2.906 0 4.969-2.438 4.969-5 0-2.156-1.406-4-3.313-4.688-0.531-0.188-1-0.344-1-1.25 0-1.156 0.875-2.875 3.875-5.344z"></path>
                 </svg>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam beatae hic neque saepe eos tenetur voluptatem illum, exercitationem sint tempora reprehenderit maiores, nam quo eaque architecto possimus quibusdam, fuga facere commodi dolore animi qui. Itaque commodi aliquam quas officia sapiente.
-                <svg class="absolute w-8 bottom-0 right-0 z-10 translate-x-3/4 translate-y-3/4 rotate-180 " fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <p class="lg:text-lg">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam beatae hic neque saepe eos tenetur voluptatem illum, exercitationem sint tempora reprehenderit maiores, nam quo eaque architecto possimus quibusdam, fuga facere commodi dolore animi qui. Itaque commodi aliquam quas officia sapiente.</p>
+                <svg class="absolute w-8 lg:w-12 bottom-0 right-0 z-10 translate-x-3/4 translate-y-3/4 rotate-180 " fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <title>quote</title>
                     <path d="M9.563 8.469l-0.813-1.25c-5.625 3.781-8.75 8.375-8.75 12.156 0 3.656 2.688 5.375 4.969 5.375 2.875 0 4.906-2.438 4.906-5 0-2.156-1.375-4-3.219-4.688-0.531-0.188-1.031-0.344-1.031-1.25 0-1.156 0.844-2.875 3.938-5.344zM21.969 8.469l-0.813-1.25c-5.563 3.781-8.75 8.375-8.75 12.156 0 3.656 2.75 5.375 5.031 5.375 2.906 0 4.969-2.438 4.969-5 0-2.156-1.406-4-3.313-4.688-0.531-0.188-1-0.344-1-1.25 0-1.156 0.875-2.875 3.875-5.344z"></path>
                 </svg>
             </div>
         </section>
-        <section class="flex justify-center items-center p-8 bg-black">
+        <section class="flex justify-center items-center p-8 lg:p-16 bg-black">
             <div class="small-shadow p-6 flex flex-col items-center font-poppinsRegular text-sm lg:text-lg gap-6">
-                <h2 class="text-5xl text-pink-500 font-bold text-center font-sacramentoRegular flex flex-col items-center gap-2"><span>Kirim Doa</span> <span>Dan Ucapan</span></h2>
-                <p class="text-xs text-center text-white lg:w-[80%]">Tuliskan sesuatu ucapan berupa harapan ataupun doa untuk kedua mempelai.</p>
-                <div class="flex flex-col gap-4 w-full text-xs">
+                <h2 class="text-5xl lg:text-7xl lg:flex-row text-pink-500 font-bold text-center font-sacramentoRegular flex flex-col items-center gap-2"><span>Kirim Doa</span> <span>Dan Ucapan</span></h2>
+                <p class="text-xs lg:text-base text-center text-white lg:w-[80%]">Tuliskan sesuatu ucapan berupa harapan ataupun doa untuk kedua mempelai.</p>
+                <div class="flex flex-col gap-4 w-full text-xs lg:text-sm">
                     <TextBoxBr placeholder="Tuliskan nama lengkap anda" name="name"/>
                     <TextBoxBr placeholder="Tuliskan alamat email lengkap" name="email"/>
                     <TextBoxBr placeholder="Tuliskan nomor HP lengkap" name="phoneNumber"/>
