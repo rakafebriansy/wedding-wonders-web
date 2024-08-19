@@ -42,6 +42,11 @@
     font-family: 'Poppins-Regular';
     src: url('./assets/fonts/Poppins-Regular.ttf');
 }
+@font-face {
+    font-family: 'Sacramento-Regular';
+    src: url('./assets/fonts/Sacramento-Regular.ttf');
+}
+
 .small-shadow {
     box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.1);
   }

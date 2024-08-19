@@ -3,6 +3,7 @@ import LandingPageView from '../views/Landing.vue';
 import TemplatePickerPageView from '../views/TemplatePicker.vue';
 import FormPageView from '../views/Form.vue';
 import BeautifulInWhite from '../views/templates/BeautifulInWhite.vue';
+import BlackRose from "../views/templates/BlackRose.vue";
 
 const routes = [
     {
@@ -20,7 +21,11 @@ const routes = [
     {
         path: '/bw/:id',
         component: BeautifulInWhite
-    }
+    },
+    {
+        path: '/br/:id',
+        component: BlackRose
+    },
 ];
 
 const router = createRouter({

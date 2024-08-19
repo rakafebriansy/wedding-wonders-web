@@ -17,12 +17,12 @@
                 </svg>
             </li>
         </ul>
-        <Button btnType="link" :icon="currentIcon">CUSTOMER SERVICE</Button>
+        <ElbowButton btnType="link" :icon="currentIcon">CUSTOMER SERVICE</ElbowButton>
     </nav>
 </template>
 <script>
     import { markRaw } from 'vue';
-    import Button from '../elements/Button.vue';
+    import ElbowButton from '../elements/ElbowButton.vue';
     import Headphone from '../icons/Headphone.vue';
 
     export default {
@@ -32,7 +32,7 @@
             }
         },
         components: {
-            Button,
+            ElbowButton,
             Headphone
         },
         methods: {

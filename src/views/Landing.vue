@@ -15,7 +15,7 @@
                 <div class="w-full text-[#5C8692] text-xs lg:text-2xl">
                     <p>Buatlah Undangan Pernikahanmu Dengan Sederhana, Cepat, dan Elegan.</p>
                 </div>
-                <Button btnType="link" link="/picker" textSize="lg:text-lg">BUAT SEKARANG</Button>
+                <ElbowButton btnType="link" link="/picker" textSize="lg:text-lg">BUAT SEKARANG</ElbowButton>
             </div>
             <div class="bg-[#303E42] w-full justify-center items-center flex p-10 relative">
                 <div class="w-[50%] h-[50%] border-white border-4 absolute top-1/2 -left-10 -translate-y-1/2 hidden lg:block"></div>
@@ -27,7 +27,7 @@
                 <p class="text-[#5C8692] font-manropeSemiBold text-xs lg:text-base">LAYANAN KAMI</p>
                 <h1 class=" font-playfairDisplayBold text-2xl lg:text-5xl">Mengapa Harus Wedding Wonders?</h1>
             </div>
-            <ul class="flex flex-col items-center lg:flex-row gap-10 w-[60%]">
+            <ul class="flex flex-col lg:flex-row items-start gap-10 w-[60%]">
                 <li class="w-[80%] h-full">
                     <Card :image="card1Img" title="Mudah dan Cepat">Dengan berbagai template yang tersedia, pengguna dapat memilih desain yang sesuai dan menyesuaikannya dengan informasi acara hanya dalam beberapa menit.</Card>
                 </li>
@@ -74,7 +74,7 @@
                             <TextareaBox placeholder="Komentar" name="komentar" :icon="editIcon" />
                         </li>
                         <li>
-                            <Button btnType="submit" textSize="text-xl" :full="true">KIRIM</Button>
+                            <ElbowButton btnType="submit" textSize="text-xl" :full="true">KIRIM</ElbowButton>
                         </li>
                     </ul>
                 </form>
@@ -92,7 +92,7 @@
     import card1Img from '../assets/images/Card1.png';
     import card2Img from '../assets/images/Card2.png';
     import card3Img from '../assets/images/Card3.png';
-    import Button from '../components/elements/Button.vue';
+    import ElbowButton from '../components/elements/ElbowButton.vue';
     import Card from '../components/fragments/Card.vue';
     import CommentBox from '../components/fragments/CommentBox.vue';
     import TextBox from '../components/elements/TextBox.vue';
@@ -122,7 +122,7 @@
         },
         components: {
             Navbar,
-            Button,
+            ElbowButton,
             Card,
             CommentBox,
             StarBox,

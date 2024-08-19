@@ -17,6 +17,7 @@ export default {
         'poppinsRegular': 'Poppins-Regular',
         'parisienneRegular': 'Parisienne-Regular',
         'appleChancery': 'Apple-Chancery',
+        'sacramentoRegular': 'Sacramento-Regular',
       }
     },
   },
