@@ -5,8 +5,8 @@
             <h1 class="text-3xl font-playfairDisplayBold lg:text-5xl">Login</h1>
             <p class="text-sm">Silahkan masuk dengan kredensial yang tepat</p>
         </div>
-        <div class="w-[90%] bg-white flex flex-col items-center lg:max-w-[60%]">
-            <form action="" method="POST" class="p-10 w-full lg:p-10 text-xs">
+        <div class="w-[90%] bg-white flex flex-col items-center lg:max-w-[60%] p-10">
+            <form action="" method="POST" class=" w-full  text-xs flex flex-col justify-center items-center gap-4">
                 <ul class="w-full flex flex-col gap-4">
                     <li>
                         <TextBox placeholder="Email" name="email" :icon="emailIcon" />
@@ -18,13 +18,15 @@
                         <ElbowButton btnType="button" @click="submitForm" textSize="text-lg" :full="true">KIRIM</ElbowButton>
                     </li>
                 </ul>
+                <p class="text-sm text-[#7A9CA5] select-none">Belum memiliki akun? <RouterLink to="/register" class="font-manropeSemiBold hover:underline cursor-pointer">Register</RouterLink></p>
             </form>
         </div>
     </div>
 </template>
 
 <script>
-    import ElbowButton from '../components/elements/ElbowButton.vue';
+    import { RouterLink } from 'vue-router';
+import ElbowButton from '../components/elements/ElbowButton.vue';
     import TextBox from '../components/elements/TextBox.vue';
     import Email from '../components/icons/Email.vue';
     import Password from '../components/icons/Password.vue';

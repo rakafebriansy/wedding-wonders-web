@@ -15,7 +15,7 @@
                 <div class="w-full text-[#5C8692] text-xs lg:text-2xl">
                     <p>Buatlah Undangan Pernikahanmu Dengan Sederhana, Cepat, dan Elegan.</p>
                 </div>
-                <ElbowButton btnType="link" link="/picker" textSize="lg:text-lg">BUAT SEKARANG</ElbowButton>
+                <ElbowButton btnType="link" :link="loginStore.isLogin ? '/form' : '/login'" textSize="lg:text-lg">BUAT SEKARANG</ElbowButton>
             </div>
             <div class="bg-[#303E42] w-full justify-center items-center flex p-10 relative">
                 <div class="w-[50%] h-[50%] border-white border-4 absolute top-1/2 -left-10 -translate-y-1/2 hidden lg:block"></div>
@@ -105,8 +105,13 @@
     import BookOpen from '../components/icons/BookOpen.vue';
     import Edit from '../components/icons/Edit.vue';
     import Footer from '../components/layouts/Footer.vue';
+    import { useLoginStore } from '../stores/useLoginStore.mjs';
 
     export default {
+        setup() {
+            const loginStore = useLoginStore();
+            return {loginStore};
+        },
         data() {
             return {
                 heroImg,

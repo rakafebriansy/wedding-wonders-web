@@ -5,8 +5,11 @@ export const useLoginStore = defineStore('login', {
     return { isLogin: false }
   },
   actions: {
-    doLogin() {
-
+    updateLogin() {
+      this.isLogin = true;
+    },
+    updateLogout() {
+      this.isLogin = false;
     }
   },
 })

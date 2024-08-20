@@ -1,8 +1,8 @@
 <template>
-    <a v-if="btnType == 'link'" :href="link" :class="fixedClass">
+    <RouterLink v-if="btnType == 'link'" :to="link" :class="fixedClass">
         <component v-if="icon" :is="icon" classname="w-3"></component>
         <p><slot></slot></p>
-    </a>
+    </RouterLink>
     <button v-else-if="btnType == 'button'" :type="btnType" :class="fixedClass">
         <component v-if="icon" :is="icon" classname="w-3"></component>
         <p><slot></slot></p>
@@ -15,6 +15,8 @@
 
 
 <script>
+import { RouterLink } from 'vue-router';
+
     export default {
         props: {
             icon: {
