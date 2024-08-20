@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-full bg-[#EBF3F5] flex flex-col items-center justify-center font-manropeRegular min-h-screen gap-6">
+    <div class="w-full h-full bg-[#EBF3F5] flex flex-col items-center justify-center font-manropeRegular min-h-screen gap-6 relative">
         <div class="text-center flex flex-col items-center gap-2 w-[80%]">
             <p class="text-[#7A9CA5] text-xs">WEDDING WONDERS</p>
             <h1 class="text-3xl font-playfairDisplayBold lg:text-5xl">Identitas Pengantin</h1>
@@ -28,8 +28,8 @@
                     <p class="hidden lg:block">Undangan</p>
                 </li>
             </ul>
-            <form action="" method="POST" class="p-10 w-full lg:p-10 text-xs">
-                <ul v-if="pageStore.pageNum == 1" class="w-full flex flex-col gap-4">
+            <form @submit.prevent="submitForm" method="POST" class="p-10 w-full lg:p-10 text-xs">
+                <ul :class="`w-full ${pageStore.pageNum == 1 ? 'flex' : 'hidden'} flex-col gap-4`">
                     <li>
                         <TextBox placeholder="Nama Pengantin Pria" name="groom_name" :icon="maleIcon" />
                     </li>
@@ -46,7 +46,7 @@
                         <ElbowButton btnType="button" @click="movePage()" textSize="text-lg" :full="true">SELANJUTNYA</ElbowButton>
                     </li>
                 </ul>
-                <ul v-if="pageStore.pageNum == 2" class="w-full flex flex-col gap-4">
+                <ul :class="`w-full ${pageStore.pageNum == 2 ? 'flex' : 'hidden'} flex-col gap-4`">
                     <li>
                         <TextBox placeholder="Nama Pengantin Wanita" name="bride_name" :icon="maleIcon" />
                     </li>
@@ -63,7 +63,7 @@
                         <ElbowButton btnType="button" @click="movePage()" textSize="text-lg" :full="true">SELANJUTNYA</ElbowButton>
                     </li>
                 </ul>
-                <ul v-if="pageStore.pageNum == 3" class="w-full flex flex-col gap-4">
+                <ul :class="`w-full ${pageStore.pageNum == 3 ? 'flex' : 'hidden'} flex-col gap-4`">
                     <li>
                         <TextBox placeholder="Waktu Akad Nikah" name="ceremony_time" :icon="clockIcon" />
                     </li>
@@ -73,14 +73,16 @@
                     <li>
                         <TextBox placeholder="Tempat Akad Nikah" name="ceremony_location" :icon="buildingIcon" />
                     </li>
-                    <li>
-                        <TextBox placeholder="Koordinat Lokasi Tempat Akad Nikah" name="ceremony_coordinates" :icon="locationIcon" />
+                    <li class="relative">
+                        <input type="hidden" name="ceremony_coordinates" :value="ceremonyCoordinates">
+                        <TextBox :isReadonly="true" :placeholder="ceremonyCoordinates.latitude != 0 ? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Akad Nikah'" :icon="locationIcon" />
+                        <div @click="ceremonyMapModal = true" class=" absolute right-5 top-1/2 -translate-y-1/2"><p class="font-manropeSemiBold select-none text-[#5C8692] hover:underline cursor-pointer">pilih</p></div>
                     </li>
                     <li>
                         <ElbowButton btnType="button" @click="movePage()" textSize="text-lg" :full="true">SELANJUTNYA</ElbowButton>
                     </li>
                 </ul>
-                <ul v-if="pageStore.pageNum == 4" class="w-full flex flex-col gap-4">
+                <ul :class="`w-full ${pageStore.pageNum == 4 ? 'flex' : 'hidden'} flex-col gap-4`">
                     <li>
                         <TextBox placeholder="Waktu Resepsi Nikah" name="reception_time" :icon="clockIcon" />
                     </li>
@@ -90,33 +92,50 @@
                     <li>
                         <TextBox placeholder="Tempat Resepsi Nikah" name="reception_location" :icon="buildingIcon" />
                     </li>
-                    <li>
-                        <TextBox placeholder="Koordinat Lokasi Tempat Resepsi Nikah" name="reception_coordinates" :icon="locationIcon" />
+                    <li class="relative">
+                        <input type="hidden" name="reception_coordinates" :value="receptionCoordinates">
+                        <TextBox :isReadonly="true" :placeholder="receptionCoordinates.latitude != 0 ? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Resepsi Nikah'" :icon="locationIcon" />
+                        <div @click="receptionMapModal = true" class=" absolute right-5 top-1/2 -translate-y-1/2"><p class="font-manropeSemiBold select-none text-[#5C8692] hover:underline cursor-pointer">pilih</p></div>
                     </li>
-                    <li>
+                    <li >
                         <ElbowButton btnType="button" @click="movePage()" textSize="text-lg" :full="true">SELANJUTNYA</ElbowButton>
                     </li>
                 </ul>
-                <ul v-if="pageStore.pageNum == 5" class="w-full flex flex-col gap-4">
+                <ul :class="`w-full ${pageStore.pageNum == 5 ? 'flex' : 'hidden'} flex-col gap-4`">
                     <li>
                         <TextareaBox placeholder="Cerita kalian..." name="story" :icon="loveIcon" />
                     </li>
                     <li class="flex flex-col gap-2 border border-[#5C8692] p-4">
                         <p class="text-[#555555] select-none opacity-60 lg: text-base">Pilih template undangan kalian...</p>
                         <div class="w-full flex gap-5">
-                            <div :class="templatePicker1Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(true,false)">
+                            <input type="hidden" name="template" :value="templatePickerValue">
+                            <div :class="templatePicker1Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(true,false,'beautiful-in-white')">
                                 <img :src="templatePicker1Img" alt="">
                             </div>
-                            <div :class="templatePicker2Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(false,true)">
+                            <div :class="templatePicker2Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(false,true,'black-rose')">
                                 <img :src="templatePicker2Img" alt="">
                             </div>
                         </div>
                     </li>
                     <li>
-                        <ElbowButton btnType="button" @click="submitForm" textSize="text-lg" :full="true">KIRIM</ElbowButton>
+                        <ElbowButton btnType="submit" textSize="text-lg" :full="true">KIRIM</ElbowButton>
                     </li>
                 </ul>
             </form>
+        </div>
+        <div :class="`w-full min-h-screen absolute left-0 top-0 ${ceremonyMapModal ? 'block' : 'hidden'}`">
+            <div class="w-full h-full absolute bg-black opacity-60"></div>
+            <div class="absolute z-30 flex flex-col gap-4 left-1/2 top-1/2 -translate-y-1/2 w-96 h-96 lg:h-[30rem] lg:w-[50rem] -translate-x-1/2 bg-white p-4">
+                <div id="map1" class="w-full h-[80%]"></div>
+                <ElbowButton btnType="button" @click="ceremonyMapModal = false" textSize="text-lg" :full="true">PILIH</ElbowButton>
+            </div>
+        </div>
+        <div :class="`w-full min-h-screen absolute left-0 top-0 ${receptionMapModal ? 'block' : 'hidden'}`">
+            <div class="w-full h-full absolute bg-black opacity-60"></div>
+            <div class="absolute z-30 flex flex-col gap-4 left-1/2 top-1/2 -translate-y-1/2 w-96 h-96 lg:h-[30rem] lg:w-[50rem] -translate-x-1/2 bg-white p-4">
+                <div id="map2" class="w-full h-[80%]"></div>
+                <ElbowButton btnType="button" @click="receptionMapModal = false" textSize="text-lg" :full="true">PILIH</ElbowButton>
+            </div>
         </div>
     </div>
 </template>
@@ -139,7 +158,9 @@
     import { markRaw } from 'vue';
     import templatePicker1Img from '../assets/images/TemplatePicker1.png';
     import templatePicker2Img from '../assets/images/TemplatePicker2.png';
-import Love from '../components/icons/Love.vue';
+    import Love from '../components/icons/Love.vue';
+    import L from "leaflet";
+    import 'leaflet/dist/leaflet.css';
 
     export default {
         setup() {
@@ -162,6 +183,11 @@ import Love from '../components/icons/Love.vue';
                 templatePicker2Img,
                 templatePicker1Clicked: true,
                 templatePicker2Clicked: false,
+                templatePickerValue: 'beautiful-in-white',
+                ceremonyMapModal: false,
+                receptionMapModal: false,
+                ceremonyCoordinates: '',
+                receptionCoordinates: '',
             }
         },
         components: {
@@ -184,13 +210,89 @@ import Love from '../components/icons/Love.vue';
             movePage(){
                 this.pageStore.nextPage();
             },
-            templateClicked(template1, template2) {
+            templateClicked(template1, template2, templateName) {
                 this.templatePicker1Clicked = template1;
                 this.templatePicker2Clicked = template2;
+                this.templatePickerValue = templateName;
             },
-            submitForm() {
-                
+            submitForm(e) {
+                const formData = new FormData(e.target);
+                const formValues = {};
+            formData.forEach((value, key) => {
+                formValues[key] = value;
+        });
+
+        // Display the form values
+        console.log(formValues);
             }
-        }
+        },
+        mounted() {
+            function MapCreate(mapId) {
+                var map;
+                if (!(typeof map == "object")) {
+                    map = L.map(mapId, {
+                        center: [40, 0],
+                        zoom: 2
+                    });
+                }
+                else {
+                    map.setZoom(2).panTo([40, 0]);
+                }
+                L.tileLayer(tilesURL, {
+                    attribution: mapAttrib,
+                    maxZoom: 19
+                }).addTo(map);
+                return map;
+            }
+
+            var tilesURL = 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
+            var mapAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>';
+
+            let pin1;
+            let pin2;
+            let map1 = MapCreate('map1');
+            let map2 = MapCreate('map2');
+
+            map1.on('click', (e) => {
+                
+                this.ceremonyCoordinates = JSON.stringify({
+                    latitude: e.latlng.lat,
+                    longitude: e.latlng.lng
+                });
+                if (typeof pin1 == "object") {
+                    pin1.setLatLng(e.latlng);
+                }
+                else {
+                    pin1 = L.marker(e.latlng, { riseOnHover: true, draggable: true });
+                    pin1.addTo(map1);
+                    pin1.on('drag', (e) => {
+                        this.ceremonyCoordinates = JSON.stringify({
+                        latitude: e.latlng.lat,
+                        longitude: e.latlng.lng
+                    });
+                    });
+                }
+                console.log(this.ceremonyCoordinates)
+            });
+            map2.on('click', (e) => {
+                this.receptionCoordinates = JSON.stringify({
+                    latitude: e.latlng.lat,
+                    longitude: e.latlng.lng
+                });
+                if (typeof pin2 == "object") {
+                    pin2.setLatLng(e.latlng);
+                }
+                else {
+                    pin2 = L.marker(e.latlng, { riseOnHover: true, draggable: true });
+                    pin2.addTo(map2);
+                    pin2.on('drag', (e) => {
+                        this.receptionCoordinates = JSON.stringify({
+                            latitude: e.latlng.lat,
+                            longitude: e.latlng.lng
+                        });
+                    });
+                }
+            });
+        },
     }
 </script>

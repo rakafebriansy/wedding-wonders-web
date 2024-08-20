@@ -36,6 +36,7 @@
     import { login } from '../services/auth.mjs';
     import { useAlertStore } from '../stores/useAlertStore.mjs';
     import Alert from '../components/elements/Alert.vue';
+    import { setCookie } from '../helper/helper.mjs';
 
     export default {
         setup() {
@@ -61,7 +62,9 @@
                 const formData = new FormData(e.target);
                 login(formData, (data) => {
                     this.loginStore.updateLogin();
+                    console.log(data)
                     this.alertStore.showAlert(data.message, true);
+                    setCookie(data.token,1);
                     setTimeout(() => {
                         this.$router.push('/');
                     }, 2000);
