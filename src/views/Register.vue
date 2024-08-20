@@ -39,7 +39,6 @@
     import { markRaw } from 'vue';
     import { register } from '../services/auth.mjs';
     import { useAlertStore } from '../stores/useAlertStore.mjs';
-import { setCookie } from '../helper/helper.mjs';
 
     export default {
         setup() {
@@ -61,16 +60,13 @@ import { setCookie } from '../helper/helper.mjs';
             Alert
         },
         methods: {
-            submitForm() {
-
-            },
             doRegister(e) {
                 const formData = new FormData(e.target);
                 register(formData, (data) => {
-                    this.alertStore.showAlert(data.message, true);
                     setTimeout(() => {
                         this.$router.push('/login');
                     }, 2000);
+                    this.alertStore.showAlert(data.message, true);
                 }, (message) => {
                     this.alertStore.showAlert(message, false)
                 });
