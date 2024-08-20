@@ -113,7 +113,7 @@
                         </div>
                     </li>
                     <li>
-                        <ElbowButton btnType="button" textSize="text-lg" :full="true">KIRIM</ElbowButton>
+                        <ElbowButton btnType="button" @click="submitForm" textSize="text-lg" :full="true">KIRIM</ElbowButton>
                     </li>
                 </ul>
             </form>
@@ -187,6 +187,9 @@ import Love from '../components/icons/Love.vue';
             templateClicked(template1, template2) {
                 this.templatePicker1Clicked = template1;
                 this.templatePicker2Clicked = template2;
+            },
+            submitForm() {
+                
             }
         }
     }

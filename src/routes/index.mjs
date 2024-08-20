@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LandingPageView from '../views/Landing.vue';
-import TemplatePickerPageView from '../views/TemplatePicker.vue';
 import FormPageView from '../views/Form.vue';
 import BeautifulInWhite from '../views/templates/BeautifulInWhite.vue';
 import BlackRose from "../views/templates/BlackRose.vue";
+import LoginPageView from "../views/Login.vue";
+import RegisterPageView from "../views/Register.vue";
 
 const routes = [
     {
@@ -11,8 +12,12 @@ const routes = [
         component: LandingPageView
     },
     {
-        path: '/picker',
-        component: TemplatePickerPageView
+        path: '/login',
+        component: LoginPageView
+    },
+    {
+        path: '/register',
+        component: RegisterPageView
     },
     {
         path: '/form',

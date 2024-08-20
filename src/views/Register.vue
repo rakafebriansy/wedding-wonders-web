@@ -2,8 +2,8 @@
     <div class="w-full h-full bg-[#EBF3F5] flex flex-col items-center justify-center font-manropeRegular min-h-screen gap-6">
         <div class="text-center flex flex-col items-center gap-2 w-[80%]">
             <p class="text-[#7A9CA5] text-xs">WEDDING WONDERS</p>
-            <h1 class="text-3xl font-playfairDisplayBold lg:text-5xl">Login</h1>
-            <p class="text-sm">Silahkan masuk dengan kredensial yang tepat</p>
+            <h1 class="text-3xl font-playfairDisplayBold lg:text-5xl">Registrasi</h1>
+            <p class="text-sm">Silahkan daftar akun untuk melanjutkan</p>
         </div>
         <div class="w-[90%] bg-white flex flex-col items-center lg:max-w-[60%]">
             <form action="" method="POST" class="p-10 w-full lg:p-10 text-xs">
@@ -13,6 +13,9 @@
                     </li>
                     <li>
                         <TextBox placeholder="Kata Sandi" :isPassword="true" name="password" :icon="passwordIcon" />
+                    </li>
+                    <li>
+                        <TextBox placeholder="Konfirmasi Kata Sandi" :isPassword="true" name="password_confirmation" :icon="passwordIcon" />
                     </li>
                     <li>
                         <ElbowButton btnType="button" @click="submitForm" textSize="text-lg" :full="true">KIRIM</ElbowButton>
