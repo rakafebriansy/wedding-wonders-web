@@ -3,6 +3,10 @@
         <component v-if="icon" :is="icon" classname="w-3"></component>
         <p><slot></slot></p>
     </a>
+    <button v-else-if="btnType == 'button'" :type="btnType" :class="fixedClass">
+        <component v-if="icon" :is="icon" classname="w-3"></component>
+        <p><slot></slot></p>
+    </button>
     <button v-else :type="btnType" :class="fixedClass">
         <component v-if="icon" :is="icon" classname="w-3"></component>
         <p><slot></slot></p>
@@ -32,7 +36,7 @@
             full: {
                 type: Boolean,
                 required: false
-            }
+            },
         },
         computed: {
             fixedClass() {

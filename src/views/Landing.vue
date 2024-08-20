@@ -93,16 +93,16 @@
     import card2Img from '../assets/images/Card2.png';
     import card3Img from '../assets/images/Card3.png';
     import ElbowButton from '../components/elements/ElbowButton.vue';
+    import TextareaBox from '../components/elements/TextareaBox.vue';
+    import TextBox from '../components/elements/TextBox.vue';
     import Card from '../components/fragments/Card.vue';
     import CommentBox from '../components/fragments/CommentBox.vue';
-    import TextBox from '../components/elements/TextBox.vue';
     import StarBox from '../components/elements/StarBox.vue';
     import { markRaw } from 'vue';
     import User from '../components/icons/User.vue';
     import Email from '../components/icons/Email.vue';
     import Phone from '../components/icons/Phone.vue';
     import BookOpen from '../components/icons/BookOpen.vue';
-    import TextareaBox from '../components/elements/TextareaBox.vue';
     import Edit from '../components/icons/Edit.vue';
     import Footer from '../components/layouts/Footer.vue';
 
