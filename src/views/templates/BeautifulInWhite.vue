@@ -39,15 +39,14 @@
             <div class="w-[80%] lg:w-[75%] flex flex-col items-start py-8 gap-4 lg:gap-6">
                 <h2 class="font-appleChancery text-3xl lg:text-4xl">Story</h2>
                 <div class="flex flex-col text-sm lg:text-base lg:flex-row lg:gap-10">
-                    <p class="w-full gold-to-bottom text-justify">Urna turpis nibh nulla ornare ut. Tristique et, et in enim ultrices convallis. Risus mi, tellus dapibus morbi neque id et purus. Mi tincidunt commodo mattis tortor, est. Eu tempus eget risus sed orci venenatis, nibh. Viverra pellentesque turpis donec ac augue viverra sollicitudin natoque vulputate.</p>
-                    <p class="w-full gold-to-bottom text-justify">Elementum faucibus commodo sed placerat sollicitudin pellentesque cras ultricies suscipit. Sit vitae volutpat, odio pellentesque pharetra. Blandit neque fringilla mi arcu arcu in. Nunc quisque lobortis pharetra maecenas commodo malesuada sit tortor nunc. Tortor, pharetra, maecenas nec bibendum lorem egestas. Velit nisl a viverra diam, id blandit nisl, tempor. Iaculis et ipsum, dui venenatis. Mi ultricies gravida sit semper lobortis id laoreet. Lacus, scelerisque libero phasellus non egestas condimentum et nunc. Commodo diam sodales donec cras sed vel. Senectus in venenatis nisl lectus congue ultricies non.</p>
+                    <p class="w-full gold-to-bottom text-justify">{{ data.story }}</p>
                 </div>
             </div>
         </section>
         <section class="flex flex-col items-center ">
             <div class="w-[90%] flex flex-col items-center gap-8 py-8">
                 <h2 class="text-4xl lg:text-5xl font-parisienneRegular">Lokasi</h2>
-                <div class="w-full min-h-96 lg:min-h-[30rem]" id="map">
+                <div class="w-full min-h-96 lg:min-h-[30rem] z-0" id="map">
                 </div>
             </div>
         </section>
@@ -98,33 +97,34 @@
             </div>
         </section>
         <section class="flex justify-center items-center p-8">
-            <div class="small-shadow p-6 flex flex-col items-center font-poppinsRegular text-sm lg:text-lg gap-6">
+            <form @submit.prevent="submitForm" class="small-shadow p-6 flex flex-col items-center font-poppinsRegular text-sm lg:text-lg gap-6">
                 <h2 class="text-3xl lg:text-4xl text-center font-playfairDisplaySemiBold">Kirim Doa Dan Ucapan</h2>
                 <p class="text-base lg:text-lg text-center text-[#7E7E7E] lg:w-[80%]">Tuliskan sesuatu ucapan berupa harapan ataupun doa untuk kedua mempelai.</p>
                 <div class="flex flex-col gap-2 lg:gap-3 w-full">
-                    <TextBoxBw placeholder="Tuliskan nama lengkap anda" name="name"/>
+                    <TextBoxBw placeholder="Tuliskan nama lengkap anda" name="fullname"/>
                     <TextBoxBw placeholder="Tuliskan alamat email lengkap" name="email"/>
-                    <TextBoxBw placeholder="Tuliskan nomor HP lengkap" name="phoneNumber"/>
+                    <TextBoxBw placeholder="Tuliskan nomor HP lengkap" name="phone_number"/>
                     <TextBoxBw placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
-                    <TextareaBoxBw placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
+                    <TextareaBoxBw placeholder="Tuliskan pesan anda kepada kedua mempelai" name="content"/>
                     <div class="w-full flex flex-col items-start gap-1 text-[#7E7E7E]">
                         <p>Apakah anda akan hadir memenuhi undangan saya?</p>
                         <div class="flex gap-2">
-                            <input type="radio" name="attend">
+                            <input type="radio" name="isAttending" value="1">
                             <p>Saya akan hadir</p>
                         </div>
                         <div class="flex gap-2">
-                            <input type="radio" name="attend">
+                            <input type="radio" name="isAttending" value="0">
                             <p>Saya tidak akan hadir</p>
                         </div>
                     </div>
                 </div>
                 <RoundedButton btnType="submit" textSize="text-sm lg:text-lg" :full="true">KIRIM</RoundedButton>
-            </div>
+            </form>
         </section>
         <section class="flex justify-center py-8">
             <h4 class="text-sm font-poppinsRegular gold-to-bottom">Kehadiran Anda kami Tunggu</h4>
         </section>
+        <Alert/>
     </div>
     <div v-else class="w-full min-h-screen flex justify-center items-center">
         <p>Loading...</p>
@@ -140,7 +140,15 @@
     import { read } from '../../services/wedding.mjs';
     import L from "leaflet";
     import 'leaflet/dist/leaflet.css';
+    import { useAlertStore } from '../../stores/useAlertStore.mjs';
+    import { create } from '../../services/comment.mjs';
+    import Alert from '../../components/elements/Alert.vue'
+
     export default {
+        setup() {
+            const alertStore = useAlertStore();
+            return { alertStore };
+        },
         data() {
             return {
             flowerImg,
@@ -159,6 +167,7 @@
             TextBoxBw,
             TextareaBoxBw,
             RoundedButton,
+            Alert
         },
         async mounted() {
             const queryParams = atob(this.$route.params.id);
@@ -172,31 +181,31 @@
         },
         methods: {
             async fetchData(queryParams) {
-            try {
-                const response = await read(queryParams);
-                this.data = response.data.data;
+                try {
+                    const response = await read(queryParams);
+                    this.data = response.data.data;
 
-                const date = new Date(this.data.ceremony_date);
-                const options = { day: '2-digit', month: 'long', year: 'numeric' };
-                this.parsedCeremonyDate = date.toLocaleDateString('id-ID', options);
+                    const date = new Date(this.data.ceremony_date);
+                    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+                    this.parsedCeremonyDate = date.toLocaleDateString('id-ID', options);
 
-                let time = this.data.ceremony_time.split(',');
-                this.parsedCeremonyTime = {
-                    start: time[0],
-                    end: time[1]
-                };
-                
-                time = this.data.reception_time.split(',');
-                this.parsedReceptionTime = {
-                    start: time[0],
-                    end: time[1]
-                };
+                    let time = this.data.ceremony_time.split(',');
+                    this.parsedCeremonyTime = {
+                        start: time[0],
+                        end: time[1]
+                    };
+                    
+                    time = this.data.reception_time.split(',');
+                    this.parsedReceptionTime = {
+                        start: time[0],
+                        end: time[1]
+                    };
 
-                this.ceremonyCoordinates = JSON.parse(this.data.ceremony_coordinates);
-                this.receptionCoordinates = JSON.parse(this.data.reception_coordinates);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+                    this.ceremonyCoordinates = JSON.parse(this.data.ceremony_coordinates);
+                    this.receptionCoordinates = JSON.parse(this.data.reception_coordinates);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
             },
             initMap() {
                 const map = L.map('map').setView([this.ceremonyCoordinates.latitude, this.ceremonyCoordinates.longitude], 16);
@@ -226,6 +235,15 @@
                         clearInterval(countdown);
                         this.countdown = { days: 0, hours: 0, minutes}
                     }
+                });
+            },
+            submitForm(e) {
+                const queryParams = atob(this.$route.params.id);
+                const formData = new FormData(e.target);
+                create(formData, queryParams, (data) => {
+                    this.alertStore.showAlert(data.message, true);
+                }, (message) => {
+                    this.alertStore.showAlert(message, false)
                 });
             }
         }

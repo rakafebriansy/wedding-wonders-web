@@ -162,7 +162,7 @@
     import Love from '../components/icons/Love.vue';
     import L from "leaflet";
     import 'leaflet/dist/leaflet.css';
-    import * as weddingService from '../services/wedding.mjs'
+    import {create} from '../services/wedding.mjs'
     import { getCookie } from '../helper/helper.mjs';
     import Alert from '../components/elements/Alert.vue';
     import { useAlertStore } from '../stores/useAlertStore.mjs';
@@ -225,7 +225,7 @@
             submitForm(e) {
                 const formData = new FormData(e.target);
                 const token = getCookie();
-                weddingService.create(formData,token, (data) => {
+                create(formData,token, (data) => {
                     setTimeout(() => {
                         this.alertStore.hideAlert();
                         this.$router.push('/');

@@ -62,7 +62,7 @@
         </section>
         <section class="bg-black p-10 lg:p-20 flex flex-col items-center gap-8 lg:gap-12 text-white text-xs">
             <h1 class="text-pink-500 font-sacramentoRegular text-center text-5xl lg:text-7xl font-bold">Informasi Acara</h1>
-            <div class="w-full min-h-96 lg:min-h-[30rem]" id="map"></div>
+            <div class="w-full min-h-96 lg:min-h-[30rem] z-0" id="map"></div>
             <p class="text-center lg:text-lg w-[90%] lg:w-[70%]">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba di tujuan namun tidak ada tanda-tanda sedang dilangsungkan pernikahan, boleh jadi Anda salah jadwal, atau salah tempat.</p>
             <div class="flex flex-col gap-8 lg:gap-12 lg:flex-row lg:w-[80%]">
                 <div class="w-full border-white border bg-[#3A3A3A] rounded-lg">
@@ -120,11 +120,11 @@
                 <h2 class="text-5xl lg:text-7xl lg:flex-row text-pink-500 font-bold text-center font-sacramentoRegular flex flex-col items-center gap-2"><span>Kirim Doa</span> <span>Dan Ucapan</span></h2>
                 <p class="text-xs lg:text-base text-center text-white lg:w-[80%]">Tuliskan sesuatu ucapan berupa harapan ataupun doa untuk kedua mempelai.</p>
                 <div class="flex flex-col gap-4 w-full text-xs lg:text-sm">
-                    <TextBoxBr placeholder="Tuliskan nama lengkap anda" name="name"/>
+                    <TextBoxBr placeholder="Tuliskan nama lengkap anda" name="fullname"/>
                     <TextBoxBr placeholder="Tuliskan alamat email lengkap" name="email"/>
-                    <TextBoxBr placeholder="Tuliskan nomor HP lengkap" name="phoneNumber"/>
+                    <TextBoxBr placeholder="Tuliskan nomor HP lengkap" name="phone_number"/>
                     <TextBoxBr placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
-                    <TextareaBoxBr placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
+                    <TextareaBoxBr placeholder="Tuliskan Tuliskan pesan anda kepada kedua mempelai" name="address"/>
                     <div class="w-full flex flex-col items-start text-white gap-2">
                         <p>Apakah anda akan hadir memenuhi undangan saya?</p>
                         <div class="flex gap-2">
@@ -140,6 +140,7 @@
                 <SmoothButton btnType="submit" additionClass="text-sm lg:text-lg" :full="true">KIRIM</SmoothButton>
             </div>
         </section>
+        <Alert/>
     </div>
     <div v-else class="w-full min-h-screen flex justify-center items-center">
         <p>Loading...</p>
@@ -153,6 +154,7 @@
     import { read } from '../../services/wedding.mjs';
     import L from "leaflet";
     import 'leaflet/dist/leaflet.css';
+    import Alert from '../../components/elements/Alert.vue'
     
     export default {
         data() {
@@ -171,6 +173,7 @@
         components: {
             SmoothButton,
             TextareaBoxBr,
+            Alert,
             TextBoxBr,
         },
         async mounted() {

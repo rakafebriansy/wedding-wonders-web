@@ -1,5 +1,5 @@
 <template>
-    <div v-if="alertStore.isAlert" id="alert" class="w-full min-h-screen flex justify-center items-center absolute">
+    <div v-if="alertStore.isAlert" id="alert" class="w-full min-h-screen flex justify-center items-center fixed z-50 top-0 left-0">
         <div class="w-full min-h-screen absolute bg-black opacity-35"></div>
         <div class="p-8 shadow-lg border relative border-[#7A9CA5] z-30 flex justify-start gap-3 bg-white items-center min-w-[16rem] max-w-[90%]">
             <div class="w-[20%] flex justify-center items-center">
