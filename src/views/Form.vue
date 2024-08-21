@@ -226,6 +226,10 @@
                 const formData = new FormData(e.target);
                 const token = getCookie();
                 weddingService.create(formData,token, (data) => {
+                    setTimeout(() => {
+                        this.alertStore.hideAlert();
+                        this.$router.push('/');
+                    }, 5000);
                     this.alertStore.showAlert(`${data.message}. Your invitation link is ${import.meta.env.VITE_CLIENT_URL}${data.data.template}/${btoa(data.data.wedding_id)}`, true);
                 }, (message) => {
                     this.alertStore.showAlert(message, false)
