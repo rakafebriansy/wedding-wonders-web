@@ -142,7 +142,7 @@
     import 'leaflet/dist/leaflet.css';
     import { useAlertStore } from '../../stores/useAlertStore.mjs';
     import { create } from '../../services/comment.mjs';
-    import Alert from '../../components/elements/Alert.vue'
+    import Alert from '../../components/elements/Alert.vue';
 
     export default {
         setup() {

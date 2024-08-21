@@ -116,7 +116,7 @@
             </div>
         </section>
         <section class="flex justify-center items-center p-8 lg:p-16 bg-black">
-            <div class="small-shadow p-6 flex flex-col items-center font-poppinsRegular text-sm lg:text-lg gap-6">
+            <form @submit.prevent="submitForm" class="small-shadow p-6 flex flex-col items-center font-poppinsRegular text-sm lg:text-lg gap-6">
                 <h2 class="text-5xl lg:text-7xl lg:flex-row text-pink-500 font-bold text-center font-sacramentoRegular flex flex-col items-center gap-2"><span>Kirim Doa</span> <span>Dan Ucapan</span></h2>
                 <p class="text-xs lg:text-base text-center text-white lg:w-[80%]">Tuliskan sesuatu ucapan berupa harapan ataupun doa untuk kedua mempelai.</p>
                 <div class="flex flex-col gap-4 w-full text-xs lg:text-sm">
@@ -124,21 +124,21 @@
                     <TextBoxBr placeholder="Tuliskan alamat email lengkap" name="email"/>
                     <TextBoxBr placeholder="Tuliskan nomor HP lengkap" name="phone_number"/>
                     <TextBoxBr placeholder="Tuliskan alamat lengkap anda (opsional)" name="address"/>
-                    <TextareaBoxBr placeholder="Tuliskan Tuliskan pesan anda kepada kedua mempelai" name="address"/>
+                    <TextareaBoxBr placeholder="Tuliskan Tuliskan pesan anda kepada kedua mempelai" name="content"/>
                     <div class="w-full flex flex-col items-start text-white gap-2">
                         <p>Apakah anda akan hadir memenuhi undangan saya?</p>
                         <div class="flex gap-2">
-                            <input type="radio" name="attend">
+                            <input type="radio" name="isAttending" value="1">
                             <p>Saya akan hadir</p>
                         </div>
                         <div class="flex gap-2">
-                            <input type="radio" name="attend">
+                            <input type="radio" name="isAttending" value="0">
                             <p>Saya tidak akan hadir</p>
                         </div>
                     </div>
                 </div>
                 <SmoothButton btnType="submit" additionClass="text-sm lg:text-lg" :full="true">KIRIM</SmoothButton>
-            </div>
+            </form>
         </section>
         <Alert/>
     </div>
@@ -154,9 +154,15 @@
     import { read } from '../../services/wedding.mjs';
     import L from "leaflet";
     import 'leaflet/dist/leaflet.css';
-    import Alert from '../../components/elements/Alert.vue'
+    import { useAlertStore } from '../../stores/useAlertStore.mjs';
+    import { create } from '../../services/comment.mjs';
+    import Alert from '../../components/elements/Alert.vue';
     
     export default {
+        setup() {
+            const alertStore = useAlertStore();
+            return { alertStore };
+        },
         data() {
             return {
                 weddingPhotoImg,
@@ -242,6 +248,15 @@
                         clearInterval(countdown);
                         this.countdown = { days: 0, hours: 0, minutes}
                     }
+                });
+            },
+            submitForm(e) {
+                const queryParams = atob(this.$route.params.id);
+                const formData = new FormData(e.target);
+                create(formData, queryParams, (data) => {
+                    this.alertStore.showAlert(data.message, true);
+                }, (message) => {
+                    this.alertStore.showAlert(message, false)
                 });
             }
         }
