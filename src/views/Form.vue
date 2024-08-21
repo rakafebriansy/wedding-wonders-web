@@ -68,14 +68,14 @@
                         <TextBox placeholder="Waktu Akad Nikah" name="ceremony_time" :icon="clockIcon" />
                     </li>
                     <li>
-                        <TextBox placeholder="Tanggal Akad Nikah" name="ceremony_date" :icon="dateIcon" />
+                        <TextBox placeholder="Tanggal Akad Nikah (YYYY-MM-DD)" name="ceremony_date" :icon="dateIcon" />
                     </li>
                     <li>
                         <TextBox placeholder="Tempat Akad Nikah" name="ceremony_location" :icon="buildingIcon" />
                     </li>
                     <li class="relative">
                         <input type="hidden" name="ceremony_coordinates" :value="ceremonyCoordinates">
-                        <TextBox :isReadonly="true" :placeholder="ceremonyCoordinates.latitude != 0 ? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Akad Nikah'" :icon="locationIcon" />
+                        <TextBox :isReadonly="true" :placeholder="ceremonyCoordinates.length > 0 ? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Akad Nikah'" :icon="locationIcon" />
                         <div @click="ceremonyMapModal = true" class=" absolute right-5 top-1/2 -translate-y-1/2"><p class="font-manropeSemiBold select-none text-[#5C8692] hover:underline cursor-pointer">pilih</p></div>
                     </li>
                     <li>
@@ -87,14 +87,14 @@
                         <TextBox placeholder="Waktu Resepsi Nikah" name="reception_time" :icon="clockIcon" />
                     </li>
                     <li>
-                        <TextBox placeholder="Tanggal Resepsi Nikah" name="reception_date" :icon="dateIcon" />
+                        <TextBox placeholder="Tanggal Resepsi Nikah (YYYY-MM-DD)" name="reception_date" :icon="dateIcon" />
                     </li>
                     <li>
                         <TextBox placeholder="Tempat Resepsi Nikah" name="reception_location" :icon="buildingIcon" />
                     </li>
                     <li class="relative">
                         <input type="hidden" name="reception_coordinates" :value="receptionCoordinates">
-                        <TextBox :isReadonly="true" :placeholder="receptionCoordinates.latitude != 0 ? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Resepsi Nikah'" :icon="locationIcon" />
+                        <TextBox :isReadonly="true" :placeholder="receptionCoordinates.length > 0? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Resepsi Nikah'" :icon="locationIcon" />
                         <div @click="receptionMapModal = true" class=" absolute right-5 top-1/2 -translate-y-1/2"><p class="font-manropeSemiBold select-none text-[#5C8692] hover:underline cursor-pointer">pilih</p></div>
                     </li>
                     <li >
@@ -137,6 +137,7 @@
                 <ElbowButton btnType="button" @click="receptionMapModal = false" textSize="text-lg" :full="true">PILIH</ElbowButton>
             </div>
         </div>
+        <Alert/>
     </div>
 </template>
 
@@ -161,11 +162,16 @@
     import Love from '../components/icons/Love.vue';
     import L from "leaflet";
     import 'leaflet/dist/leaflet.css';
+    import * as weddingService from '../services/wedding.mjs'
+    import { getCookie } from '../helper/helper.mjs';
+    import Alert from '../components/elements/Alert.vue';
+    import { useAlertStore } from '../stores/useAlertStore.mjs';
 
     export default {
         setup() {
             const pageStore = usePageStore();
-            return {pageStore};
+            const alertStore = useAlertStore();
+            return {pageStore, alertStore};
         },
         data() {
             return {
@@ -204,7 +210,8 @@
             Date,
             Clock,
             Building,
-            Love
+            Love,
+            Alert
         },
         methods: {
             movePage(){
@@ -217,13 +224,12 @@
             },
             submitForm(e) {
                 const formData = new FormData(e.target);
-                const formValues = {};
-            formData.forEach((value, key) => {
-                formValues[key] = value;
-        });
-
-        // Display the form values
-        console.log(formValues);
+                const token = getCookie();
+                weddingService.create(formData,token, (data) => {
+                    this.alertStore.showAlert(data.message, true);
+                }, (message) => {
+                    this.alertStore.showAlert(message, false)
+                });
             }
         },
         mounted() {

@@ -64,6 +64,7 @@
                 const formData = new FormData(e.target);
                 register(formData, (data) => {
                     setTimeout(() => {
+                        this.alertStore.hideAlert();
                         this.$router.push('/login');
                     }, 2000);
                     this.alertStore.showAlert(data.message, true);

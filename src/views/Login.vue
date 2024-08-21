@@ -66,6 +66,7 @@
                     this.alertStore.showAlert(data.message, true);
                     setCookie(data.token,1);
                     setTimeout(() => {
+                        this.alertStore.hideAlert();
                         this.$router.push('/');
                     }, 2000);
                 }, (message) => {
