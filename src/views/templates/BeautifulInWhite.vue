@@ -161,7 +161,7 @@
             RoundedButton,
         },
         async mounted() {
-            const queryParams = this.$route.params.id;
+            const queryParams = atob(this.$route.params.id);
             await this.fetchData(queryParams);
 
             if (this.ceremonyCoordinates && this.ceremonyCoordinates) {
@@ -211,22 +211,22 @@
                     .openPopup();
             },
             startCountdown() {
-            const targetDate = new Date(`${this.parsedCeremonyDate} ${this.parsedCeremonyTime.start}`).getTime();
-            const countdown = setInterval(() => {
-                const now = new Date().getTime();
-                const timeDifference = targetDate - now;
-                this.countdown = {
-                days: Math.floor(timeDifference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                minutes: Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60)),
-                seconds: Math.floor((timeDifference % (1000 * 60)) / 1000)
-                };
+                const targetDate = new Date(`${this.data.ceremony_date} ${this.parsedCeremonyTime.start}`).getTime();
+                const countdown = setInterval(() => {
+                    const now = new Date().getTime();
+                    const timeDifference = targetDate - now;
+                    this.countdown = {
+                    days: Math.floor(timeDifference / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                    minutes: Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds: Math.floor((timeDifference % (1000 * 60)) / 1000)
+                    };
 
-                if (timeDifference < 0) {
-                    clearInterval(countdown);
-                    this.countdown = { days: 0, hours: 0, minutes}
-                }
-            });
+                    if (timeDifference < 0) {
+                        clearInterval(countdown);
+                        this.countdown = { days: 0, hours: 0, minutes}
+                    }
+                });
             }
         }
     }

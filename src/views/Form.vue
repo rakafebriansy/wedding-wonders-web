@@ -65,7 +65,7 @@
                 </ul>
                 <ul :class="`w-full ${pageStore.pageNum == 3 ? 'flex' : 'hidden'} flex-col gap-4`">
                     <li>
-                        <TextBox placeholder="Waktu Akad Nikah" name="ceremony_time" :icon="clockIcon" />
+                        <TextBox placeholder="Waktu Akad Nikah (HH:MM - HH:MM)" name="ceremony_time" :icon="clockIcon" />
                     </li>
                     <li>
                         <TextBox placeholder="Tanggal Akad Nikah (YYYY-MM-DD)" name="ceremony_date" :icon="dateIcon" />
@@ -84,7 +84,7 @@
                 </ul>
                 <ul :class="`w-full ${pageStore.pageNum == 4 ? 'flex' : 'hidden'} flex-col gap-4`">
                     <li>
-                        <TextBox placeholder="Waktu Resepsi Nikah" name="reception_time" :icon="clockIcon" />
+                        <TextBox placeholder="Waktu Resepsi Nikah (HH:MM - HH:MM)" name="reception_time" :icon="clockIcon" />
                     </li>
                     <li>
                         <TextBox placeholder="Tanggal Resepsi Nikah (YYYY-MM-DD)" name="reception_date" :icon="dateIcon" />
@@ -94,10 +94,10 @@
                     </li>
                     <li class="relative">
                         <input type="hidden" name="reception_coordinates" :value="receptionCoordinates">
-                        <TextBox :isReadonly="true" :placeholder="receptionCoordinates.length > 0? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Resepsi Nikah'" :icon="locationIcon" />
+                        <TextBox :isReadonly="true" :placeholder="receptionCoordinates.length > 0 ? 'Sudah Terisi' : 'Koordinat Lokasi Tempat Resepsi Nikah'" :icon="locationIcon" />
                         <div @click="receptionMapModal = true" class=" absolute right-5 top-1/2 -translate-y-1/2"><p class="font-manropeSemiBold select-none text-[#5C8692] hover:underline cursor-pointer">pilih</p></div>
                     </li>
-                    <li >
+                    <li>
                         <ElbowButton btnType="button" @click="movePage()" textSize="text-lg" :full="true">SELANJUTNYA</ElbowButton>
                     </li>
                 </ul>
@@ -109,10 +109,10 @@
                         <p class="text-[#555555] select-none opacity-60 lg: text-base">Pilih template undangan kalian...</p>
                         <div class="w-full flex gap-5">
                             <input type="hidden" name="template" :value="templatePickerValue">
-                            <div :class="templatePicker1Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(true,false,'beautiful-in-white')">
+                            <div :class="templatePicker1Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(true,false,'bw')">
                                 <img :src="templatePicker1Img" alt="">
                             </div>
-                            <div :class="templatePicker2Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(false,true,'black-rose')">
+                            <div :class="templatePicker2Clicked ? 'border-2 border-[#5C8692] box-border ' : ' opacity-50'" @click="templateClicked(false,true,'br')">
                                 <img :src="templatePicker2Img" alt="">
                             </div>
                         </div>
@@ -189,7 +189,7 @@
                 templatePicker2Img,
                 templatePicker1Clicked: true,
                 templatePicker2Clicked: false,
-                templatePickerValue: 'beautiful-in-white',
+                templatePickerValue: 'bw',
                 ceremonyMapModal: false,
                 receptionMapModal: false,
                 ceremonyCoordinates: '',
@@ -226,7 +226,7 @@
                 const formData = new FormData(e.target);
                 const token = getCookie();
                 weddingService.create(formData,token, (data) => {
-                    this.alertStore.showAlert(data.message, true);
+                    this.alertStore.showAlert(`${data.message}. Your invitation link is ${import.meta.env.VITE_CLIENT_URL}${data.data.template}/${btoa(data.data.wedding_id)}`, true);
                 }, (message) => {
                     this.alertStore.showAlert(message, false)
                 });
@@ -261,10 +261,10 @@
 
             map1.on('click', (e) => {
                 
-                this.ceremonyCoordinates = {
+                this.ceremonyCoordinates = JSON.stringify({
                     latitude: e.latlng.lat,
                     longitude: e.latlng.lng
-                };
+                });
                 if (typeof pin1 == "object") {
                     pin1.setLatLng(e.latlng);
                 }
@@ -278,7 +278,6 @@
                     });
                     });
                 }
-                console.log(this.ceremonyCoordinates)
             });
             map2.on('click', (e) => {
                 this.receptionCoordinates = JSON.stringify({
