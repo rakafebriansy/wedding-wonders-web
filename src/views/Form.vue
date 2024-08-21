@@ -238,11 +238,11 @@
                 if (!(typeof map == "object")) {
                     map = L.map(mapId, {
                         center: [40, 0],
-                        zoom: 2
+                        zoom: 16
                     });
                 }
                 else {
-                    map.setZoom(2).panTo([40, 0]);
+                    map.setZoom(16).panTo([40, 0]);
                 }
                 L.tileLayer(tilesURL, {
                     attribution: mapAttrib,
@@ -261,10 +261,10 @@
 
             map1.on('click', (e) => {
                 
-                this.ceremonyCoordinates = JSON.stringify({
+                this.ceremonyCoordinates = {
                     latitude: e.latlng.lat,
                     longitude: e.latlng.lng
-                });
+                };
                 if (typeof pin1 == "object") {
                     pin1.setLatLng(e.latlng);
                 }

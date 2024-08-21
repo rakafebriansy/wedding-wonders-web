@@ -1,37 +1,37 @@
 <template>
-    <div class="relative font-manropeRegular">
+    <div v-if="data" class="relative font-manropeRegular">
         <section class="relative w-full min-h-screen overflow-hidden flex justify-center flex-col items-center gap-16 lg:gap-28">
             <img :src="weddingPhotoImg" alt="wedding-photo" class="animation-slideshow lg:animate-none absolute h-full left-0 lg:w-screen max-w-max lg:max-w-none">
             <div class="w-full h-full bg-[rgba(255,255,255,0.7)] absolute"></div>
             <div class="text-4xl lg:text-6xl lg:gap-6 font-appleChancery z-10 flex items-center gap-2 flex-col">
-                <h1 class="gold-to-bottom">Rafael</h1>
+                <h1 class="gold-to-bottom">{{ data.groom_name }}</h1>
                 <h1 class="gold-to-bottom">&</h1>
-                <h1 class="gold-to-bottom">Hannah</h1>
+                <h1 class="gold-to-bottom">{{ data.bride_name }}</h1>
             </div>
             <div class="z-10 flex flex-col gap-1 lg:gap-4 items-center">
                 <h2 class="text-3xl lg:text-5xl font-parisienneRegular text-center">Akan segera melangsungkan pernikahan</h2>
-                <h2 class="text-2xl lg:text-4xl font-oxygenMonoRegular">Sabtu, 17 Agustus 2024</h2>
+                <h2 class="text-2xl lg:text-4xl font-oxygenMonoRegular">{{ this.parsedCeremonyDate }}</h2>
             </div>
             <h2 class="text-2xl lg:text-4xl font-oxygenMonoRegular z-10 text-center">
-                <span class="text-[#6B5125]">3</span> Hari 
-                <span class="text-[#6B5125]">20</span> Jam 
-                <span class="text-[#6B5125]">16</span> Menit 
-                <span class="text-[#6B5125]">30</span> Detik
+                <span class="text-[#6B5125]">{{ this.countdown.days }}</span> Hari 
+                <span class="text-[#6B5125]">{{ this.countdown.hours }}</span> Jam 
+                <span class="text-[#6B5125]">{{ this.countdown.minutes }}</span> Menit 
+                <span class="text-[#6B5125]">{{ this.countdown.seconds }}</span> Detik
             </h2>
         </section>
         <section class="flex flex-col lg:flex-row items-center lg:py-4">
             <div class="w-[80%] flex flex-col items-center py-8">
-                <h1 class="text-4xl lg:text-5xl gold-to-top font-appleChancery mb-5">Rafael</h1>
+                <h1 class="text-4xl lg:text-5xl gold-to-top font-appleChancery mb-5">{{ this.data.groom_name }}</h1>
                 <div class="font-parisienneRegular text-lg lg:text-2xl">
-                    <p class="mb-2">Putra dari bapak Aristoteles S.Kom M.Kom</p>
-                    <p>Putra dari Ibu Febrianti Nugraha M.Eng</p>
+                    <p class="mb-2">Putra dari Bapak {{ this.data.groom_father_name }}</p>
+                    <p>Putra dari Ibu {{ this.data.groom_mother_name }}</p>
                 </div>
             </div>
             <div class="w-[80%] flex flex-col items-center py-8">
-                <h1 class="text-4xl lg:text-5xl gold-to-top font-appleChancery mb-5">Hannah</h1>
+                <h1 class="text-4xl lg:text-5xl gold-to-top font-appleChancery mb-5">{{ this.data.bride_name }}</h1>
                 <div class="font-parisienneRegular text-lg lg:text-2xl">
-                    <p class="mb-2">Putra dari bapak Muhammad Juliari S.Pd</p>
-                    <p>Putra dari Ibu Siti Aminah</p>
+                    <p class="mb-2">Putra dari Bapak {{ this.data.bride_father_name }}</p>
+                    <p>Putra dari Ibu {{ this.data.bride_mother_name }}</p>
                 </div>
             </div>
         </section>
@@ -47,8 +47,7 @@
         <section class="flex flex-col items-center ">
             <div class="w-[90%] flex flex-col items-center gap-8 py-8">
                 <h2 class="text-4xl lg:text-5xl font-parisienneRegular">Lokasi</h2>
-                <div class="w-full">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31595.500634455668!2d113.72218910000001!3d-8.1585914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd694351d727e69%3A0xec33c34804a10832!2sUniversitas%20Jember!5e0!3m2!1sid!2sid!4v1723651116596!5m2!1sid!2sid" class="w-full min-h-[20rem] lg:min-h-[35rem]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="w-full min-h-96 lg:min-h-[30rem]" id="map">
                 </div>
             </div>
         </section>
@@ -74,12 +73,11 @@
                             <h3 class="text-[#9A7436]">There is only one happiness in this life, to love and be loved</h3>
                             <img :src="flowerImg" class="w-[20%]" alt="Flower">
                         </div>
-                        <div class="small-shadow p-8 flex flex-col items-center text-center gap-3">
+                        <div class="small-shadow p-8 flex flex-col items-center text-center gap-3 lg:min-w-96">
                             <h3 class="gold-to-bottom">Marriage</h3>
                             <div class="gold-to-bottom lg:items-center text-sm lg:text-base font-poppinsRegular flex flex-col gap-3">
-                                <p>10:00 AM to 1:00PM</p>
-                                <p class="lg:w-[60%]">Jl. Pemuda sesat , Gang.Petir
-                                    No.12, Jakarta Selatan</p>
+                                <p>{{ parsedCeremonyTime.start }} to {{ parsedCeremonyTime.end }}</p>
+                                <p class="lg:w-[60%]">{{ data.ceremony_location }}</p>
                             </div>
                         </div>
                     </div>
@@ -88,12 +86,11 @@
                             <h3 class="text-[#9A7436]">There is only one happiness in this life, to love and be loved</h3>
                             <img :src="flowerImg" class="w-[20%]" alt="Flower">
                         </div>
-                        <div class="small-shadow p-8 flex flex-col items-center text-center gap-3">
+                        <div class="small-shadow p-8 flex flex-col items-center text-center gap-3 lg:min-w-96">
                             <h3 class="gold-to-bottom">Reception</h3>
                             <div class="gold-to-bottom lg:items-center text-sm lg:text-base font-poppinsRegular flex flex-col gap-3">
-                                <p>10:00 AM to 1:00PM</p>
-                                <p class="lg:w-[60%]">Jl. Pemuda sesat , Gang.Petir
-                                    No.12, Jakarta Selatan</p>
+                                <p>{{ parsedReceptionTime.start }} to {{ parsedReceptionTime.end }}</p>
+                                <p class="lg:w-[60%]">{{ data.reception_location }}</p>
                             </div>
                         </div>
                     </div>
@@ -129,6 +126,9 @@
             <h4 class="text-sm font-poppinsRegular gold-to-bottom">Kehadiran Anda kami Tunggu</h4>
         </section>
     </div>
+    <div v-else class="w-full min-h-screen flex justify-center items-center">
+        <p>Loading...</p>
+    </div>
 </template>
 
 <script>
@@ -137,20 +137,97 @@
     import TextBoxBw from '../../components/elements/TextBoxBw.vue';
     import TextareaBoxBw from '../../components/elements/TextareaBoxBw.vue';
     import RoundedButton from '../../components/elements/RoundedButton.vue';
+    import { read } from '../../services/wedding.mjs';
+    import L from "leaflet";
+    import 'leaflet/dist/leaflet.css';
     export default {
         data() {
             return {
-                flowerImg,
-                weddingPhotoImg
-            }
+            flowerImg,
+            weddingPhotoImg,
+            data: null,
+            parsedCeremonyDate: '',
+            parsedCeremonyTime: {},
+            parsedReceptionDate: '',
+            parsedReceptionTime: {},
+            countdown: {},
+            ceremonyCoordinates: {},
+            receptionCoordinates: {},
+            };
         },
         components: {
             TextBoxBw,
             TextareaBoxBw,
-            RoundedButton
+            RoundedButton,
+        },
+        async mounted() {
+            const queryParams = this.$route.params.id;
+            await this.fetchData(queryParams);
+
+            if (this.ceremonyCoordinates && this.ceremonyCoordinates) {
+                this.initMap();
+            }
+
+            this.startCountdown();
         },
         methods: {
-            
+            async fetchData(queryParams) {
+            try {
+                const response = await read(queryParams);
+                this.data = response.data.data;
+
+                const date = new Date(this.data.ceremony_date);
+                const options = { day: '2-digit', month: 'long', year: 'numeric' };
+                this.parsedCeremonyDate = date.toLocaleDateString('id-ID', options);
+
+                let time = this.data.ceremony_time.split(',');
+                this.parsedCeremonyTime = {
+                    start: time[0],
+                    end: time[1]
+                };
+                
+                time = this.data.reception_time.split(',');
+                this.parsedReceptionTime = {
+                    start: time[0],
+                    end: time[1]
+                };
+
+                this.ceremonyCoordinates = JSON.parse(this.data.ceremony_coordinates);
+                this.receptionCoordinates = JSON.parse(this.data.reception_coordinates);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+            },
+            initMap() {
+                const map = L.map('map').setView([this.ceremonyCoordinates.latitude, this.ceremonyCoordinates.longitude], 16);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                L.marker([this.ceremonyCoordinates.latitude, this.ceremonyCoordinates.longitude])
+                    .addTo(map)
+                    .bindPopup("Tempat Akad Nikah")
+                    .openPopup();
+            },
+            startCountdown() {
+            const targetDate = new Date(`${this.parsedCeremonyDate} ${this.parsedCeremonyTime.start}`).getTime();
+            const countdown = setInterval(() => {
+                const now = new Date().getTime();
+                const timeDifference = targetDate - now;
+                this.countdown = {
+                days: Math.floor(timeDifference / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((timeDifference % (1000 * 60)) / 1000)
+                };
+
+                if (timeDifference < 0) {
+                    clearInterval(countdown);
+                    this.countdown = { days: 0, hours: 0, minutes}
+                }
+            });
+            }
         }
     }
 </script>

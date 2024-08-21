@@ -16,3 +16,7 @@ export const create = (data, token, successHandler, errorHandler) => {
         }
     });
 }
+
+export const read = (id) => {
+    return axios.get(import.meta.env.VITE_BASE_URL + '/wedding/' + id);
+}
