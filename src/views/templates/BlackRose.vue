@@ -202,13 +202,13 @@
                 const options = { day: '2-digit', month: 'long', year: 'numeric' };
                 this.parsedCeremonyDate = date.toLocaleDateString('id-ID', options);
 
-                let time = this.data.ceremony_time.split(',');
+                let time = this.data.ceremony_time.split(' - ');
                 this.parsedCeremonyTime = {
                     start: time[0],
                     end: time[1]
                 };
                 
-                time = this.data.reception_time.split(',');
+                time = this.data.reception_time.split(' - ');
                 this.parsedReceptionTime = {
                     start: time[0],
                     end: time[1]

@@ -230,7 +230,7 @@
                         this.alertStore.hideAlert();
                         this.$router.push('/');
                     }, 5000);
-                    this.alertStore.showAlert(`${data.message}. Your invitation link is ${import.meta.env.VITE_CLIENT_URL}${data.data.template}/${btoa(data.data.wedding_id)}`, true);
+                    this.alertStore.showAlert(`${data.message}. Your invitation link is ${import.meta.env.VITE_CLIENT_URL}/${data.data.template}/${btoa(data.data.wedding_id)}`, true);
                 }, (message) => {
                     this.alertStore.showAlert(message, false)
                 });
